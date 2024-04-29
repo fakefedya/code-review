@@ -4,132 +4,13 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>2-form</title>
-		<style>
-			body {
-				margin: 0;
-				min-height: 100vh;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background: linear-gradient(0deg, #f39494, #f39494),
-					linear-gradient(
-						243.43deg,
-						#ffa5a5 32.96%,
-						rgba(255, 255, 255, 0) 82.03%
-					),
-					linear-gradient(
-						243.18deg,
-						#fdc5c5 25.45%,
-						rgba(242, 152, 222, 0) 100%
-					);
-			}
-			form {
-				width: 582px;
-				height: 573px;
-				border-radius: 10px;
-				background-color: #fff;
-				box-shadow: 0px 4px 4px 0px #00000040;
-			}
-			h1 {
-				margin: 0;
-				padding-top: 40px;
-				font-family: Open Sans;
-				font-size: 36px;
-				font-weight: 700;
-				line-height: 49.03px;
-				text-align: center;
-			}
-			.form-subheading {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				gap: 10px;
-			}
-			.form-subheading p {
-				margin: 0;
-				font-family: Open Sans;
-				font-size: 18px;
-				font-weight: 400;
-				line-height: 24.51px;
-				text-align: left;
-			}
-			.form-subheading a {
-				font-family: Open Sans;
-				font-size: 18px;
-				font-weight: 400;
-				line-height: 24.51px;
-				text-align: left;
-				color: #089fe0;
-			}
-			.inputs-container {
-				margin: 35px 0 15px;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 15px;
-			}
-			.inputs-container input {
-				width: 364px;
-				height: 44px;
-				background-color: #f5f5f5;
-				border-radius: 5px;
-				border: 1px solid transparent;
-				outline: none;
-				padding: 0 15px;
-				transition: 0.2s all ease-in;
-				font-weight: 500;
-				font-size: 16px;
-			}
-			.inputs-container input:focus {
-				border: 1px solid #f5f5f5;
-				background-color: #fff;
-			}
-			.inputs-container input::placeholder {
-				font-style: italic;
-				color: #999999;
-				font-weight: 400;
-			}
-			.form-action {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 15px;
-			}
-			button {
-				position: relative;
-				padding: 0;
-				border: none;
-				width: 394px;
-				height: 44px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				background-color: #089fe0;
-				border-radius: 5px;
-				color: #fff;
-				font-size: 18px;
-				font-weight: 300;
-				cursor: pointer;
-			}
-			button img {
-				position: absolute;
-				right: 20px;
-			}
-			.terms-of-use {
-				display: flex;
-				align-items: center;
-				gap: 10px;
-			}
-			.terms-checkbox {
-				display: flex;
-				align-items: center;
-				gap: 5px;
-			}
-			.terms-of-use a {
-				text-decoration: none;
-				color: #089fe0;
-			}
-		</style>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="/2-form/styles/style.css" />
 	</head>
 	<body>
 		<form>
@@ -164,8 +45,8 @@
 					<div class="terms-checkbox">
 						<input type="checkbox" name="terms" id="terms-accept" required />
 						<label for="terms-accept">Я прочитал и принимаю</label>
+						<a href="#">Условия использования</a>
 					</div>
-					<a href="#">Условия использования</a>
 				</div>
 			</div>
 		</form>
