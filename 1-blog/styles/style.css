@@ -171,6 +171,8 @@ h1 {
 }
 .hero-image img {
 	max-width: 896px;
+	border-radius: 10px;
+	overflow: hidden;
 }
 .blog-text {
 	max-width: 708px;
