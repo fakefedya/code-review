@@ -48,14 +48,16 @@ h1 {
 	color: #089fe0;
 }
 .inputs-container {
-	margin: 35px 0 22px;
+	max-width: 394px;
+	margin: 35px auto 22px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	gap: 21px;
 }
 .inputs-container input {
-	width: 364px;
+	box-sizing: border-box;
+	width: 100%;
 	height: 44px;
 	background-color: #f5f5f5;
 	border-radius: 5px;
@@ -75,6 +77,16 @@ h1 {
 	font-style: italic;
 	color: #999999;
 	font-weight: 400;
+}
+.container-row {
+	display: flex;
+	gap: 1px;
+}
+.container-row input:first-child {
+	border-radius: 5px 0 0 5px;
+}
+.container-row input:last-child {
+	border-radius: 0 5px 5px 0;
 }
 .form-action {
 	display: flex;

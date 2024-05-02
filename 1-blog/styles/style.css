@@ -79,10 +79,16 @@ body {
 	background: linear-gradient(180deg, #374151 0%, #111827 100%);
 }
 header {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 72px 0 69px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 80px 5vw;
+}
+.header-container {
+	display: flex;
+	gap: 77px;
 }
 .header-search {
 	position: relative;
@@ -119,7 +125,7 @@ header input::placeholder {
 nav {
 	display: flex;
 	align-items: center;
-	gap: 50px;
+	gap: 39px;
 }
 .nav-link {
 	display: flex;
@@ -129,6 +135,9 @@ nav {
 	color: #fff;
 	font-weight: 400;
 	font-size: 16px;
+	&:first-child {
+		padding-right: 13px;
+	}
 }
 .nav-logo {
 	width: 35px;
@@ -141,11 +150,11 @@ nav {
 	border-radius: 3px;
 }
 section {
+	max-width: 1080px;
+	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0 5vw;
-	margin: auto;
 }
 .blog-info {
 	display: flex;

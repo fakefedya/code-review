@@ -10,7 +10,7 @@
 			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="/2-form/styles/style.css" />
+		<link rel="stylesheet" href="./styles/style.css" />
 	</head>
 	<body>
 		<form>
@@ -27,7 +27,16 @@
 					placeholder="Наименование компании"
 					value="Мой компания"
 				/>
-				<input type="name" name="name" id="name" placeholder="ФИО" required />
+				<div class="container-row">
+					<input type="name" name="name" id="name" placeholder="Имя" required />
+					<input
+						type="surname"
+						name="surname"
+						id="surname"
+						placeholder="Фамилия"
+						required
+					/>
+				</div>
 				<input
 					type="email"
 					name="email"
