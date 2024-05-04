@@ -4,9 +4,13 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(0deg, #f39494, #f39494),
-		linear-gradient(243.43deg, #ffa5a5 32.96%, rgba(255, 255, 255, 0) 82.03%),
-		linear-gradient(243.18deg, #fdc5c5 25.45%, rgba(242, 152, 222, 0) 100%);
+	background: linear-gradient(
+		260deg,
+		#f6c8c6 0%,
+		#f4bfc4 45%,
+		#edaebb 63%,
+		#e99a97 100%
+	);
 	font-family: 'Open Sans', sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
