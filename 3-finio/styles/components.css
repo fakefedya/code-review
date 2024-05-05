@@ -1,0 +1,81 @@
+h1 {
+	font-size: var(--font-size-h1);
+	line-height: var(--line-height-h1);
+	font-weight: var(--font-weight-extrabold);
+	color: var(--color-white);
+}
+h2 {
+	font-size: var(--font-size-h2);
+	line-height: var(--line-height-h2);
+	font-weight: var(--font-weight-semibold);
+}
+h3 {
+	font-size: var(--font-size-h3);
+	line-height: var(--line-height-h3);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-black);
+}
+p {
+	font-size: var(--font-size-p);
+	line-height: var(--line-height-p);
+	font-weight: var(--font-weight-medium);
+	transition: 0.2s opacity ease-in;
+}
+.button {
+	display: flex;
+	width: fit-content;
+	justify-content: center;
+	line-height: 23.8px;
+	font-weight: var(--font-weight-extrabold);
+	padding: var(--button-padding-desktop);
+	border-radius: var(--button-border-radius);
+	font-size: var(--font-size-button);
+	transition: 0.2s opacity ease-in;
+}
+.button:hover {
+	opacity: 0.8;
+}
+.button.white-button {
+	background-color: var(--color-white);
+	color: var(--color-blue);
+}
+.button.blue-button {
+	background-color: var(--color-blue);
+	color: var(--color-white);
+}
+.container {
+	max-width: var(--container-max-width-desktop);
+	margin: 0 auto;
+}
+.discount-label {
+	display: flex;
+	width: fit-content;
+	justify-content: center;
+	gap: 5px;
+	line-height: 21px;
+	font-weight: var(--font-weight-medium);
+	padding: var(--discount-label-padding);
+	border-radius: var(--discount-label-border-radius);
+	font-size: var(--font-size-discount-label);
+	background-color: var(--color-green);
+	color: var(--color-white);
+}
+.discount-label span {
+	font-weight: var(--font-weight-extrabold);
+}
+.price-label {
+	display: flex;
+	width: fit-content;
+	justify-content: center;
+	gap: 5px;
+	line-height: 20.4px;
+	font-weight: var(--font-weight-bold);
+	padding: var(--price-label-padding);
+	border-radius: var(--price-label-border-radius);
+	font-size: var(--font-size-price-label);
+	background-color: var(--color-orange);
+	color: var(--color-white);
+}
+.price-label-invisible {
+	padding: 8px 0;
+}
