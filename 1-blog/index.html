@@ -3,87 +3,83 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="styles/style.css" />
 		<title>1-Blog</title>
-		<style>
-			body {
-				background: linear-gradient(180deg, #374151 0%, #111827 100%);
-				min-height: 100vh;
-			}
-			p,
-			h1,
-			span,
-			a {
-				color: #fff;
-			}
-			span {
-				opacity: 0.5;
-			}
-		</style>
 	</head>
 	<body>
 		<header>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Мой блог</a>
-					</li>
-					<li>
-						<a href="#">HTML и CSS</a>
-					</li>
-					<li>
-						<a href="#">Frontend</a>
-					</li>
-					<li>
-						<a href="#">Backend</a>
-					</li>
-				</ul>
-			</nav>
-			<input type="text" placeholder="Поиск" />
+			<div class="header-container">
+				<a class="nav-link" href="/">
+					<span class="nav-logo">B</span>
+					Мой блог</a
+				>
+				<nav>
+					<a class="nav-link" href="#">HTML и CSS</a>
+					<a class="nav-link" href="#">Frontend</a>
+					<a class="nav-link" href="#">Backend</a>
+				</nav>
+			</div>
+			<div class="header-search">
+				<img src="images/Search from Figma.png" alt="search-icon" />
+				<input type="text" placeholder="Поиск" />
+			</div>
 		</header>
 		<main>
 			<section>
-				<div>
-					<span>FRONTEND</span>
-					<span>12 мая 2024</span>
+				<div class="blog-info">
+					<span class="blog-info-type">Frontend</span>
+					<span class="blog-info-date">12 мая 2024</span>
 				</div>
 				<h1>Теория цвета - Как цвет влияет на поведение потребителей</h1>
-				<img src="images/HTML CSS Group 7.png" alt="author-image" />
+				<div class="author-info">
+					<img src="images/Ellipse 1.png" alt="author-image" />
+					<div class="author-text">
+						<div class="author-name">Наталья Васильева</div>
+						<div class="author-profession">Разработчик</div>
+					</div>
+				</div>
 			</section>
 			<section>
-				<img src="images/HTML CSS with mentor 09.jpg" alt="hero-image" />
-			</section>
-			<section>
-				<p>
-					Теория цвета — это особенности эмоционального восприятия человеком тех
-					или иных цветовых решений. Цвета и различные их комбинации влияют на
-					психику человека, а значит, во многом определяют его поведение.
-					Маркетологи и веб-дизайнеры хорошо знают, что правильно подобранная
-					цветовая гамма сайта помогает привлечь и удержать внимание
-					пользователей, сформировать положительное отношение к продукту,
-					подтолкнуть посетителей к совершению целевых действий, повысить
-					конверсию.
-				</p>
-				<p>
-					Универсального ответа на вопрос, как тот или иной цвет влияет на
-					разных людей, нет. Эмоциональная и поведенческая реакция каждого
-					человека зависит от личного опыта. Вместе с тем можно выделить
-					определенные закономерности влияния цветов на поведение пользователей.
-				</p>
-				<p>
-					В исследовании «Влияние цвета на маркетинг» (Impact of color on
-					marketing) говорится, что использование разных цветов может
-					существенно влиять на настроение и поведение потребителей.
-					Утверждается, что от 60 до 90% покупателей (в зависимости от категории
-					продукта) дают положительную или отрицательную оценку товару,
-					основываясь только на его цвете.
-				</p>
+				<div class="hero-image">
+					<img src="images/HTML CSS with mentor 09.jpg" alt="hero-image" />
+				</div>
+				<div class="blog-text">
+					<p>
+						Теория цвета — это особенности эмоционального восприятия человеком
+						тех или иных цветовых решений. Цвета и различные их комбинации
+						влияют на психику человека, а значит, во многом определяют его
+						поведение. Маркетологи и веб-дизайнеры хорошо знают, что правильно
+						подобранная цветовая гамма сайта помогает привлечь и удержать
+						внимание пользователей, сформировать положительное отношение к
+						продукту, подтолкнуть посетителей к совершению целевых действий,
+						повысить конверсию.
+					</p>
+					<p>
+						Универсального ответа на вопрос, как тот или иной цвет влияет на
+						разных людей, нет. Эмоциональная и поведенческая реакция каждого
+						человека зависит от личного опыта. Вместе с тем можно выделить
+						определенные закономерности влияния цветов на поведение
+						пользователей.
+					</p>
+					<p>
+						В исследовании «Влияние цвета на маркетинг» (Impact of color on
+						marketing) говорится, что использование разных цветов может
+						существенно влиять на настроение и поведение потребителей.
+						Утверждается, что от 60 до 90% покупателей (в зависимости от
+						категории продукта) дают положительную или отрицательную оценку
+						товару, основываясь только на его цвете.
+					</p>
+				</div>
 			</section>
 		</main>
 		<footer>
-			<div>
-				<span>Все права защищены &copy; </span>
-				<span>2024</span>
-			</div>
+			<div class="footer-text">Все права защищены &copy; 2024</div>
 		</footer>
 	</body>
 </html>

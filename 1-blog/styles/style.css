@@ -1,0 +1,239 @@
+.roboto-thin {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: normal;
+}
+
+.roboto-light {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: normal;
+}
+
+.roboto-regular {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.roboto-medium {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+.roboto-bold {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-style: normal;
+}
+
+.roboto-black {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-style: normal;
+}
+
+.roboto-thin-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: italic;
+}
+
+.roboto-light-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.roboto-regular-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.roboto-medium-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	font-style: italic;
+}
+
+.roboto-bold-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	font-style: italic;
+}
+
+.roboto-black-italic {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 900;
+	font-style: italic;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	min-height: 100vh;
+	font-optical-sizing: auto;
+	font-style: normal;
+	background: linear-gradient(180deg, #374151 0%, #111827 100%);
+}
+header {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 72px 0 69px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.header-container {
+	display: flex;
+	gap: 77px;
+}
+.header-search {
+	position: relative;
+	width: 224px;
+	height: 40px;
+}
+.header-search img {
+	position: absolute;
+	left: 18px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+header input {
+	margin: 0;
+	padding-left: 49px;
+	width: 100%;
+	height: 100%;
+	border-radius: 100px;
+	display: flex;
+	align-items: center;
+	outline: none;
+	border: none;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 18.75px;
+	text-align: left;
+	background-color: rgba(31, 41, 55, 0.6);
+	color: #fff;
+}
+header input::placeholder {
+	color: #fff;
+	opacity: 0.6;
+}
+nav {
+	display: flex;
+	align-items: center;
+	gap: 39px;
+}
+.nav-link {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+	text-decoration: none;
+	color: #fff;
+	font-weight: 400;
+	font-size: 16px;
+	&:first-child {
+		padding-right: 13px;
+	}
+}
+.nav-logo {
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #4b5563;
+	box-shadow: 0px 15px 30px 0px #00000026;
+	border-radius: 3px;
+}
+section {
+	max-width: 1080px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.blog-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.6;
+	color: #fff;
+	font-weight: 400;
+	line-height: 16.41px;
+}
+.blog-info-type {
+	text-transform: uppercase;
+}
+.blog-info-date::before {
+	content: '•';
+	margin: 0 12px;
+}
+h1 {
+	font-size: 24px;
+	font-weight: 400;
+	line-height: 38px;
+	text-align: center;
+	color: #fff;
+	max-width: 525px;
+	margin: auto;
+	padding: 14px 0 30px;
+}
+.author-info {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+}
+.author-text {
+	display: flex;
+	flex-direction: column;
+	color: #fff;
+}
+.author-name {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 28px;
+}
+.author-profession {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 28px;
+	opacity: 0.6;
+}
+.hero-image {
+	display: flex;
+	justify-content: center;
+	padding: 28px 0 69px 0;
+	margin: auto;
+}
+.hero-image img {
+	max-width: 896px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.blog-text {
+	max-width: 708px;
+}
+.blog-text p {
+	color: #fff;
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 32px;
+}
+footer {
+	display: flex;
+	justify-content: center;
+	padding: 103px 0 77px;
+}
+.footer-text {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 28px;
+	text-align: center;
+	color: #fff;
+	opacity: 0.6;
+}
