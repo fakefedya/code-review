@@ -14,12 +14,6 @@ footer {
 	flex-direction: column;
 	gap: 16px;
 }
-.footer-info-logo {
-	font-size: 36px;
-	font-weight: var(--font-weight-black);
-	text-transform: uppercase;
-	color: var(--color-white);
-}
 .footer-info-heading {
 	color: var(--color-white);
 	font-size: 17px;
@@ -43,6 +37,10 @@ footer {
 }
 .footer-menu-item a {
 	opacity: 0.5;
+	transition: 0.2s opacity ease-in;
+}
+.footer-menu-item a:hover {
+	opacity: 0.7;
 }
 .req-menu-item {
 	opacity: 0.7;

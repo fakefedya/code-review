@@ -1,5 +1,6 @@
 header {
 	position: fixed;
+	top: 0;
 	width: 100%;
 	height: var(--header-height-desktop);
 	background-color: var(--color-blue);
@@ -16,11 +17,6 @@ header {
 .header-container a {
 	color: var(--color-white);
 }
-.header-link {
-	font-size: 36px;
-	font-weight: var(--font-weight-black);
-	text-transform: uppercase;
-}
 .nav-list {
 	display: flex;
 	gap: 32px;
@@ -33,4 +29,21 @@ header {
 }
 .nav-list-link:hover {
 	opacity: var(--opacity-100);
+}
+.header-mobile-button {
+	display: none;
+}
+@media (max-width: 960px) {
+	header {
+		padding: 0 24px;
+	}
+	.header-mobile-button {
+		display: flex;
+	}
+	nav {
+		display: none;
+	}
+	.header-action {
+		display: none;
+	}
 }
