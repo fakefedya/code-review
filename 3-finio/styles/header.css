@@ -10,6 +10,7 @@ header {
 	height: 100%;
 	max-width: var(--container-max-width-desktop);
 	margin: 0 auto;
+	padding: 0 32px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -33,18 +34,8 @@ header {
 .header-mobile-button {
 	display: none;
 }
-@media (min-width: 1025px) and (max-width: 1280px) {
-	header {
-		padding: 0 32px;
-	}
-}
-@media (min-width: 961px) and (max-width: 1024px) {
-	header {
-		padding: 0 32px;
-	}
-}
 @media (max-width: 960px) {
-	header {
+	.header-container {
 		padding: 0 24px;
 	}
 	.header-mobile-button {
