@@ -16,7 +16,7 @@
 	z-index: 1;
 }
 .hero-information {
-	min-width: 515px;
+	min-width: 445px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;

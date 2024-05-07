@@ -4,13 +4,13 @@ header {
 	width: 100%;
 	height: var(--header-height-desktop);
 	background-color: var(--color-blue);
+	padding: 0 32px;
 	z-index: 10;
 }
 .header-container {
 	height: 100%;
 	max-width: var(--container-max-width-desktop);
 	margin: 0 auto;
-	padding: 0 32px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -35,7 +35,7 @@ header {
 	display: none;
 }
 @media (max-width: 960px) {
-	.header-container {
+	header {
 		padding: 0 24px;
 	}
 	.header-mobile-button {
