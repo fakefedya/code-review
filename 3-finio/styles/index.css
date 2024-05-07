@@ -1,16 +1,14 @@
 /* Hero */
 .hero-section {
 	position: relative;
-	display: flex;
-	flex-wrap: nowrap;
 	background-color: var(--color-blue);
-	height: 60vh;
+	padding: 60px 0 0;
 }
 .skew {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 24vh;
+	height: 28vh;
 }
 .hero {
 	display: flex;
@@ -18,11 +16,10 @@
 	z-index: 1;
 }
 .hero-information {
-	max-width: 515px;
+	min-width: 515px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	gap: 40px;
 }
 .hero-marketplace-list {
@@ -43,10 +40,9 @@
 	max-width: 100%;
 }
 .hero-image {
-	max-width: 1039px;
-}
-.hero-image img {
-	max-width: 100%;
+	width: 1039px;
+	width: 100%;
+	overflow: visible;
 }
 
 /* Возможности */
@@ -54,7 +50,7 @@
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid var(--color-light-gray);
-	padding: 40px 0 80px;
+	padding: 80px 0;
 }
 .advantages-item {
 	display: flex;
@@ -508,9 +504,6 @@
 }
 
 @media (min-width: 961px) and (max-width: 1024px) {
-	.hero-section {
-		height: 51vh;
-	}
 	.hero-information {
 		max-width: 400px;
 	}
@@ -541,6 +534,7 @@
 @media (max-width: 960px) {
 	.hero-section {
 		height: 70vh;
+		padding: 0;
 	}
 	.skew {
 		height: 10vh;
@@ -549,6 +543,7 @@
 		padding: 32px 0 0;
 		border-top: 1px solid #ffffff29;
 		max-width: 100%;
+		min-width: 100%;
 		gap: 32px;
 	}
 	.hero-marketplace-list {
