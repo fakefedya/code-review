@@ -24,6 +24,7 @@ p {
 .container {
 	max-width: var(--container-max-width-desktop);
 	margin: 0 auto;
+	padding: 0 32px;
 }
 .section-heading {
 	display: flex;
@@ -149,16 +150,6 @@ p {
 }
 .slider-pagination-dot.active {
 	background-color: var(--color-white);
-}
-@media (min-width: 1025px) and (max-width: 1280px) {
-	.container {
-		padding: 0 32px;
-	}
-}
-@media (min-width: 961px) and (max-width: 1024px) {
-	.container {
-		padding: 0 32px;
-	}
 }
 @media (max-width: 960px) {
 	header {
