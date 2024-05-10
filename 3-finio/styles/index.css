@@ -3,6 +3,7 @@
 	position: relative;
 	background-color: var(--color-blue);
 	padding: 60px 0 0;
+	overflow-x: hidden;
 }
 .skew {
 	position: absolute;
@@ -13,6 +14,7 @@
 .hero {
 	display: flex;
 	position: relative;
+	overflow-x: visible;
 	z-index: 1;
 }
 .hero-information {
@@ -42,7 +44,6 @@
 .hero-image {
 	width: 1039px;
 	width: 100%;
-	overflow: visible;
 }
 
 /* Возможности */
@@ -667,5 +668,11 @@
 	.slider-info-heading {
 		font-size: 24px;
 		margin: 0 0 24px;
+	}
+}
+
+@media (max-width: 368px) {
+	.rate-item-list {
+		grid-template-columns: 1fr;
 	}
 }

@@ -69,7 +69,6 @@ html {
 body {
 	min-height: 100vh;
 	background-color: var(--color-white);
-	overflow-x: hidden;
 	min-width: 375px;
 }
 main {
