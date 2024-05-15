@@ -1,12 +1,12 @@
 const userLanguage = prompt('EN / RU / DE?').toLowerCase()
-switch (true) {
-	case userLanguage === 'en':
+switch (userLanguage) {
+	case 'en':
 		console.log('Hello!')
 		break
-	case userLanguage === 'ru':
+	case 'ru':
 		console.log('Привет!')
 		break
-	case userLanguage === 'de':
+	case 'de':
 		console.log('Gutten tag!')
 		break
 	default:
