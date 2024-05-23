@@ -7,38 +7,19 @@
 
 const arr = [3, 6, 9, 2, 7, 9, 5]
 const arr2 = [1, 3, 7, 8]
-// const removeArrElements = (arr, test) => {
-// 	const filteredArr = []
-// 	for (let element of arr) {
-// 		if (element < test) {
-// 			filteredArr.push(element)
-// 		}
-// 	}
-// 	return filteredArr
-// }
 
-// const modifyArr = (arr, test, fn) => {
-// 	return fn(arr, test)
-// }
-
-// console.log(modifyArr(arr, 5, removeArrElements))
-// console.log(modifyArr(arr2, 9, removeArrElements))
-
-const removeArrElements = (arr) => {
-	return function (test) {
-		const filteredArr = []
-		for (let element of arr) {
-			if (element < test) {
-				filteredArr.push(element)
-			}
-		}
-		return filteredArr
-	}
+const removeElOfArr = (num) => {
+	return num
 }
 
-const modifyArr = removeArrElements(arr)
-const modifyArr2 = removeArrElements(arr2)
-console.log(modifyArr(6))
-console.log(modifyArr2(6))
+const filterArr = (arr, fn) => {
+	const filteredArr = []
+	const num = 4
+	for (const el of arr) {
+		el < fn(num) ? filteredArr.push(el) : false
+	}
+	return filteredArr
+}
 
-// Не совсем понял условия упражнения. Мне нужно сделать возврат функции или callback?
+console.log(filterArr(arr, removeElOfArr))
+console.log(filterArr(arr2, removeElOfArr))
