@@ -76,12 +76,81 @@
 // phoneNumberCheck(num3Error)
 // phoneNumberCheck(num4Error)
 
-const card = '2834234503458353'
+// const card = '2834234503458353'
 
-const secureCard = (card) => {
-	const cardLength = card.length
-	let securedPart = card.slice(cardLength - 4, cardLength)
-	securedPart = securedPart.padStart(cardLength - 4, '*')
-	return securedPart
+// const secureCard = (card) => {
+// 	const cardLength = card.length
+// 	let securedPart = card.slice(cardLength - 4, cardLength)
+// 	securedPart = securedPart.padStart(cardLength - 4, '*')
+// 	return securedPart
+// }
+// console.log(secureCard(card))
+
+// const users = [
+// 	{ name: 'Вася', age: 30 },
+// 	{ name: 'Катя', age: 18 },
+// 	{ name: 'Аня', age: 40 },
+// 	{ name: 'Петя', age: 25 },
+// ]
+// const sortedUsersByAge = users.sort((a, b) => a.age - b.age)
+
+// const usersArr = [
+// 	{
+// 		name: 'Вася',
+// 		surname: 'Пупкин',
+// 		age: 30,
+// 		skills: ['Разработка', 'DevOps'],
+// 	},
+// 	{
+// 		name: 'Катя',
+// 		surname: 'Белова',
+// 		age: 18,
+// 		skills: ['Дизайн'],
+// 	},
+// ]
+// console.log(usersArr)
+// const newUsersArr = usersArr.map((user) => {
+// 	return {
+// 		fullName: `${user.name} ${user.surname}`,
+// 		skillCount: user.skills.length,
+// 	}
+// })
+// console.log(newUsersArr)
+
+/*
+increase(sum, reason): Увеличивает баланс на sum, добавляет операцию с reason в массив operations. Возвращает true.
+decrease(sum, reason): Уменьшает баланс на sum если достаточно средств, иначе возвращает false. Добавляет операцию с reason в массив operations при успехе.
+getOperationLength(): Возвращает количество выполненных операций.
+*/
+
+const wallet = {
+	balance: 0,
+	operations: [],
+	increase: function (sum, reason) {
+		this.balance += sum
+		this.operations.push({ sum, reason })
+		return true
+	},
+	decrease: function (sum, reason) {
+		if (this.balance < sum) {
+			return false
+		}
+		this.balance -= sum
+		this.operations.push({ sum: -sum, reason })
+		return true
+	},
+	getOperationLength: function () {
+		return this.operations.length
+	},
 }
-console.log(secureCard(card))
+
+console.log(wallet.increase(10, 'Просто так'))
+console.log(wallet.decrease(12, 'Замена кнопки'))
+console.log(wallet.increase(230, 'Чаевые'))
+console.log(wallet.increase(5, 'Кэшбек'))
+console.log(wallet.decrease(240, 'Поход в кино'))
+console.log(wallet.decrease(1, 'Билет в автобус'))
+console.log(wallet.increase(1230, 'ЗП'))
+console.log(`${wallet.balance} ₽`)
+console.log(`Совершено ${wallet.getOperationLength()} операций`)
+console.log(wallet.operations)
