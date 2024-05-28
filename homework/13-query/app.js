@@ -5,13 +5,13 @@
 const URL = 'https://youtube.com'
 
 const queryString = (url, obj) => {
-	const fullString =
+	return (
 		URL +
 		'?' +
 		Object.entries(obj)
 			.map((el) => el.join('='))
 			.join('&')
-	return fullString
+	)
 }
 
 const object = { search: 'Вася', take: 10 }
