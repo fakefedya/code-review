@@ -2,11 +2,12 @@
 Пример: search=Вася&take=10
 */
 
-const URL = 'https://youtube.com'
+const urlYT = 'https://youtube.com'
+const urlTTV = 'https://twitch.tv'
 
 const queryString = (url, obj) => {
 	return (
-		URL +
+		url +
 		'?' +
 		Object.entries(obj)
 			.map((el) => el.join('='))
@@ -17,5 +18,5 @@ const queryString = (url, obj) => {
 const object = { search: 'Вася', take: 10 }
 const object1 = { task: 'Математика', value: 10, name: 'Коля' }
 
-console.log(queryString(URL, object))
-console.log(queryString(URL, object1))
+console.log(queryString(urlYT, object))
+console.log(queryString(urlTTV, object1))
