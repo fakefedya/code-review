@@ -2,8 +2,8 @@
 Пример: search=Вася&take=10
 */
 
-const urlYT = 'https://youtube.com'
-const urlTTV = 'https://twitch.tv'
+const sourceYT = 'https://youtube.com'
+const sourceTTV = 'https://twitch.tv'
 
 const queryString = (url, obj) => {
 	return (
@@ -18,5 +18,5 @@ const queryString = (url, obj) => {
 const object = { search: 'Вася', take: 10 }
 const object1 = { task: 'Математика', value: 10, name: 'Коля' }
 
-console.log(queryString(urlYT, object))
-console.log(queryString(urlTTV, object1))
+console.log(queryString(sourceYT, object))
+console.log(queryString(sourceTTV, object1))
