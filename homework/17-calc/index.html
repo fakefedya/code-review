@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./styles/style.css" />
+		<title>17-calc</title>
+	</head>
+	<body>
+		<div class="calculator wrapper">
+			<h1>Калькулятор</h1>
+			<div class="row">
+				<input
+					class="operand-input operand-one"
+					type="number"
+					placeholder="Введите число №1"
+				/>
+				<span class="operation">?</span>
+				<input
+					class="operand-input operand-two"
+					type="number"
+					placeholder="Введите число №2"
+				/>
+				<span class="result">=</span>
+				<input
+					class="result-input"
+					placeholder="Результат вычислений"
+					disabled
+				/>
+			</div>
+			<div class="row">
+				<button
+					class="button-operation"
+					id="plus"
+					onclick="calculateStart(this.id)"
+				>
+					Сложение
+				</button>
+				<button
+					class="button-operation"
+					id="minus"
+					onclick="calculateStart(this.id)"
+				>
+					Вычитание
+				</button>
+				<button
+					class="button-operation"
+					id="multiply"
+					onclick="calculateStart(this.id)"
+				>
+					Умножение
+				</button>
+				<button
+					class="button-operation"
+					id="division"
+					onclick="calculateStart(this.id)"
+				>
+					Деление
+				</button>
+			</div>
+			<span class="alert"></span>
+		</div>
+		<script src="./app.js"></script>
+	</body>
+</html>
