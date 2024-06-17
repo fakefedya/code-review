@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link type="image/png" href="./images/favicon.png" rel="icon" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./styles/style.css" />
+		<title>Habbit App</title>
+	</head>
+	<body>
+		<div class="app">
+			<div class="panel">
+				<img class="logo" src="./images/logo.svg" alt="Логотип Habbit App" />
+				<nav class="menu">
+					<div class="menu-list">
+						<button type="button" class="menu-item menu-item-active">
+							<img src="./images/icon-bottle.svg" alt="Бутылка	" />
+						</button>
+						<button type="button" class="menu-item">
+							<img src="./images/icon-meal.svg" alt="Еда	" />
+						</button>
+					</div>
+					<button type="button" class="menu-add">
+						<img src="./images/icon-add.svg" alt="Добавить привычку	" />
+					</button>
+				</nav>
+			</div>
+			<div class="content">
+				<header>
+					<h1>Отжимания</h1>
+					<div class="progress">
+						<div class="progress-text">
+							<div class="progress-name">Прогресс</div>
+							<div class="progress-percent">80%</div>
+						</div>
+						<div class="progress-bar">
+							<div class="progress-current"></div>
+						</div>
+					</div>
+				</header>
+				<main>
+					<div class="habbit">
+						<div class="habbit-day">День 1</div>
+						<div class="habbit-comment">Первый подход всегда даётся тяжело</div>
+						<div class="habbit-delete">
+							<img src="./images/icon-delete.svg" alt="Удалить день 1" />
+						</div>
+					</div>
+					<div class="habbit">
+						<div class="habbit-day">День 2</div>
+						<form class="habbit-form">
+							<input
+								class="habbit-comment-input"
+								type="text"
+								placeholder="Комментарий"
+							/>
+							<img
+								class="input-icon"
+								src="./images/icon-comment.svg"
+								alt="Иконка комментария"
+							/>
+						</form>
+						<button class="habbit-add">Готово</button>
+					</div>
+				</main>
+			</div>
+		</div>
+		<script src="./scripts/app.js"></script>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+.app {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	background-color: var(--color-bg-app);
+}
+
+.panel {
+	height: 100%;
+	width: var(--panel-min-width);
+	background-color: var(--color-bg-panel);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 48px;
+	padding: 28px 0;
+}
+
+.content {
+	height: 100%;
+	width: 812px;
+	padding: 45px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.logo {
+	height: 66px;
+	width: 71px;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.menu-list {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.progress {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: var(--progress-min-width);
+}
+
+.progress-text {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.progress-name {
+	color: var(--color-comment);
+	font-size: 14px;
+}
+
+.progress-percent {
+	color: var(--color-gray-text);
+	font-size: 12px;
+}
+
+.progress-bar {
+	position: relative;
+	width: var(--progress-min-width);
+	height: 5px;
+	flex-shrink: 0;
+	border-radius: 4px;
+	background-color: var(--color-bg-gray);
+}
+
+.progress-current {
+	position: absolute;
+	background-color: var(--color-purple);
+	border-radius: 4px;
+	height: 100%;
+	width: 80%;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}

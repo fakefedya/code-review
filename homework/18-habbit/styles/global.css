@@ -1,0 +1,30 @@
+:root {
+	--font-family: 'Comfortaa', sans-serif;
+
+	--color-bg-panel: #fbfaff;
+	--color-bg-app: #f3f6fd;
+	--color-bg-gray: #e6e9ed;
+	--color-white: #fff;
+	--color-black: #000;
+	--color-purple: #5051f9;
+	--color-purple-hover: #6a6afb;
+	--color-light-purple: #edecfe;
+	--color-gray-border: #e7ebfb;
+	--color-gray-icon: #94a3bd;
+	--color-comment: #23235f;
+	--color-gray-text: #768396;
+	--color-input-placeholder: #8899a8;
+
+	--progress-min-width: 235px;
+	--panel-min-width: 124px;
+}
+
+body {
+	font-family: var(--font-family);
+	font-weight: 400;
+}
+
+button,
+input {
+	font-family: var(--font-family);
+}
