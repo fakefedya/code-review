@@ -46,6 +46,11 @@ h1 {
 	font-size: 30px;
 }
 
+h2 {
+	color: var(--color-black);
+	font-size: 24px;
+}
+
 .habbit {
 	background-color: var(--color-white);
 	height: 54px;
@@ -103,7 +108,8 @@ h1 {
 	width: 100%;
 }
 
-.habbit-comment-input {
+.habbit-comment-input,
+.input {
 	width: 100%;
 	height: calc(100% - 10px);
 	margin-left: 14px;
@@ -116,11 +122,13 @@ h1 {
 	font-size: 14px;
 }
 
-.habbit-comment-input::placeholder {
+.habbit-comment-input::placeholder,
+.input::placeholder {
 	color: var(--color-input-placeholder);
 }
 
-.habbit-comment-input.error {
+.habbit-comment-input.error,
+.input.error {
 	border: 1px solid var(--color-red);
 }
 
@@ -129,11 +137,13 @@ h1 {
 	left: 34px;
 }
 
-.habbit-comment-input:focus {
+.habbit-comment-input:focus,
+.input:focus {
 	outline: 1px solid var(--color-purple);
 }
 
-.habbit-add {
+.habbit-add,
+.button {
 	width: 120px;
 	height: 39px;
 	flex-shrink: 0;
@@ -146,7 +156,36 @@ h1 {
 	transition: 0.2s background-color, color ease;
 }
 
-.habbit-add:hover {
+.habbit-add:hover,
+.button-hover {
 	background-color: var(--color-purple);
 	color: var(--color-white);
+}
+
+.cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-cover);
+}
+
+.cover-hidden {
+	display: none;
+}
+
+.popup {
+	max-width: 500px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 24px;
+	background-color: var(--color-white);
+	border-radius: 10px;
 }

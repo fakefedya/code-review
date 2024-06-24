@@ -15,7 +15,7 @@
 	--color-comment: #23235f;
 	--color-gray-text: #768396;
 	--color-input-placeholder: #8899a8;
-
+	--color-cover: rgba(0, 0, 0, 0.25);
 	--progress-min-width: 235px;
 	--panel-min-width: 124px;
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">яё
+<html lang="ru">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -44,7 +44,7 @@
 							<form class="habbit-form" onsubmit='addDays(event)'>
 								<input
 									name='comment'
-									class="habbit-comment-input"
+									class="habbit-comment-input input"
 									type="text"
 									placeholder="Комментарий"
 								/>
@@ -53,13 +53,33 @@
 									src="./images/icon-comment.svg"
 									alt="Иконка комментария"
 								/>
-								<button type='submit' class="habbit-add">Готово</button>
+								<button type='submit' class="button habbit-add">Готово</button>
 							</form>
 				</main>
 			</div>
 			<div class="cover cover-hidden">
 				<div class="popup">
-					
+					<h2>Новая привычка</h2>
+					<div class="icon-label">Иконка</div>
+					<div class="icon-select">
+						<button class='menu-item'>
+							<img src="./images/icon-gym.svg" alt="Иконка спорта">
+						</button>
+						<button class='menu-item menu-item-active'>
+							<img src="./images/icon-bottle.svg" alt="Иконка воды">
+						</button>
+						<button class='menu-item'>
+							<img src="./images/icon-meal.svg" alt="Иконка питания">
+						</button>
+					</div>
+					<form class="popup-form">
+						<input class='input' type="text" name="name" placeholder='Название'>
+						<input  class='input' type="number" name="name" placeholder='Цель'>
+						<button class="button" type='submit'>Добавить</button>
+					</form>
+					<button class='popup-close'>
+						<img src="./images/icon-close.svg" alt="Иконка закрытия">
+					</button>
 				</div>
 			</div>
 		</div>

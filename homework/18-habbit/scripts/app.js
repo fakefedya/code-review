@@ -6,7 +6,10 @@ let globalActiveHabbitId
 
 /* page */
 const page = {
-	menu: document.querySelector('.menu-list'),
+	menu: {
+		habbitButton: document.querySelector('.menu-list'),
+		addHabbitButton: document.querySelector('.menu-add'),
+	},
 	header: {
 		h1: document.querySelector('.h1'),
 		progressPercent: document.querySelector('.progress-percent'),
@@ -15,6 +18,10 @@ const page = {
 	main: {
 		daysContainer: document.getElementById('days'),
 		nextDay: document.querySelector('.habbit-day'),
+	},
+	popup: {
+		popupWindow: document.querySelector('.cover'),
+		popupCloseButton: document.querySelector('.popup-close'),
 	},
 }
 
@@ -47,7 +54,7 @@ function reRenderMenu(activeHabbit) {
 			if (activeHabbit.id === habbit.id) {
 				element.classList.add('menu-item-active')
 			}
-			page.menu.appendChild(element)
+			page.menu.habbitButton.appendChild(element)
 			continue
 		}
 		if (activeHabbit.id === habbit.id) {
@@ -127,7 +134,7 @@ function addDays(event) {
 function deleteDay(dayIndex) {
 	habbits = habbits.map((habbit) => {
 		if (habbit.id === globalActiveHabbitId) {
-			return habbit.days.splice(dayIndex, 1)
+			habbit.days.splice(dayIndex, 1)
 		}
 		return habbit
 	})
@@ -135,9 +142,28 @@ function deleteDay(dayIndex) {
 	saveData()
 }
 
+/* toggle popup */
+
+function togglePopup() {
+	if (!page.menu.addHabbitButton) {
+		return
+	}
+	page.menu.addHabbitButton.addEventListener('click', () => {
+		if (page.popup.popupWindow.classList.contains('cover-hidden')) {
+			page.popup.popupWindow.classList.remove('cover-hidden')
+		}
+	})
+	page.popup.popupCloseButton.addEventListener('click', () => {
+		if (!page.popup.popupWindow.classList.contains('cover-hidden')) {
+			page.popup.popupWindow.classList.add('cover-hidden')
+		}
+	})
+}
+
 /* init */
 
 ;(() => {
 	loadData()
 	reRender(habbits[0].id)
+	togglePopup()
 })()
