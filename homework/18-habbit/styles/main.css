@@ -85,9 +85,10 @@ header {
 	background-color: var(--color-purple);
 	border-radius: 4px;
 	height: 100%;
-	width: 80%;
+	transition: 0.2s width ease;
 }
 
+#days,
 main {
 	display: flex;
 	flex-direction: column;

@@ -99,6 +99,7 @@ h1 {
 	position: relative;
 	display: flex;
 	align-items: center;
+	gap: 14px;
 	width: 100%;
 }
 
@@ -110,9 +111,17 @@ h1 {
 	border: 1px solid var(--color-gray-border);
 	background: #fff;
 	padding: 12px 20px 12px 44px;
-	color: var(--color-input-placeholder);
+	color: var(--color-comment);
 	font-family: Comfortaa;
 	font-size: 14px;
+}
+
+.habbit-comment-input::placeholder {
+	color: var(--color-input-placeholder);
+}
+
+.habbit-comment-input.error {
+	border: 1px solid var(--color-red);
 }
 
 .input-icon {

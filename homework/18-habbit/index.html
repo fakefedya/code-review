@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru">яё
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -26,11 +26,11 @@
 			</div>
 			<div class="content">
 				<header>
-					<h1>Отжимания</h1>
+					<h1 class="h1">-</h1>
 					<div class="progress">
 						<div class="progress-text">
 							<div class="progress-name">Прогресс</div>
-							<div class="progress-percent">80%</div>
+							<div class="progress-percent">-</div>
 						</div>
 						<div class="progress-bar">
 							<div class="progress-current"></div>
@@ -38,30 +38,29 @@
 					</div>
 				</header>
 				<main>
-					<div class="habbit">
-						<div class="habbit-day">День 1</div>
-						<div class="habbit-comment">Первый подход всегда даётся тяжело</div>
-						<div class="habbit-delete">
-							<img src="./images/icon-delete.svg" alt="Удалить день 1" />
-						</div>
-					</div>
-					<div class="habbit">
-						<div class="habbit-day">День 2</div>
-						<form class="habbit-form">
-							<input
-								class="habbit-comment-input"
-								type="text"
-								placeholder="Комментарий"
-							/>
-							<img
-								class="input-icon"
-								src="./images/icon-comment.svg"
-								alt="Иконка комментария"
-							/>
-						</form>
-						<button class="habbit-add">Готово</button>
-					</div>
+					<div id="days"></div>	
+						<div class="habbit">
+							<div class="habbit-day">День 2</div>
+							<form class="habbit-form" onsubmit='addDays(event)'>
+								<input
+									name='comment'
+									class="habbit-comment-input"
+									type="text"
+									placeholder="Комментарий"
+								/>
+								<img
+									class="input-icon"
+									src="./images/icon-comment.svg"
+									alt="Иконка комментария"
+								/>
+								<button type='submit' class="habbit-add">Готово</button>
+							</form>
 				</main>
+			</div>
+			<div class="cover cover-hidden">
+				<div class="popup">
+					
+				</div>
 			</div>
 		</div>
 		<script src="./scripts/app.js"></script>

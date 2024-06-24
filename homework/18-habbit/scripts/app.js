@@ -2,10 +2,20 @@
 
 let habbits = []
 const HABBIT_KEY = 'HABBIT_KEY'
+let globalActiveHabbitId
 
 /* page */
 const page = {
 	menu: document.querySelector('.menu-list'),
+	header: {
+		h1: document.querySelector('.h1'),
+		progressPercent: document.querySelector('.progress-percent'),
+		progressCurrent: document.querySelector('.progress-current'),
+	},
+	main: {
+		daysContainer: document.getElementById('days'),
+		nextDay: document.querySelector('.habbit-day'),
+	},
 }
 
 /* utils */
@@ -25,9 +35,6 @@ function saveData() {
 /* render */
 
 function reRenderMenu(activeHabbit) {
-	if (!activeHabbit) {
-		return
-	}
 	document.querySelector('.menu-list').innerHTML = ''
 	for (const habbit of habbits) {
 		const existed = document.querySelector(`[menu-habbit-id="${habbit.id}]"`)
@@ -51,12 +58,81 @@ function reRenderMenu(activeHabbit) {
 	}
 }
 
-function renderHead(activeHabbit) {}
+function reRenderHead(activeHabbit) {
+	page.header.h1.innerText = activeHabbit.name
+	const progress =
+		activeHabbit.days.length / activeHabbit.target > 1
+			? 100
+			: (activeHabbit.days.length / activeHabbit.target) * 100
+	page.header.progressPercent.innerText = `${progress.toFixed(0)}%`
+	page.header.progressCurrent.setAttribute('style', `width : ${progress}%`)
+}
+
+function reRenderContent(activeHabbit) {
+	page.main.daysContainer.innerHTML = ''
+	for (const index in activeHabbit.days) {
+		const element = document.createElement('div')
+		element.classList.add('habbit')
+		element.innerHTML = `<div class="habbit-day">День ${Number(index) + 1}</div>
+			<div class="habbit-comment">
+				${activeHabbit.days[index].comment}
+			</div>
+			<button type="button" class="habbit-delete" onclick="deleteDay(${Number(
+				index
+			)})">
+				<img src="./images/icon-delete.svg" alt="Удалить день ${Number(index) + 1}" />
+			</button>`
+		page.main.daysContainer.appendChild(element)
+	}
+	page.main.nextDay.innerHTML = `День ${activeHabbit.days.length + 1}`
+}
 
 function reRender(activeHabbitId) {
+	globalActiveHabbitId = activeHabbitId
 	const activeHabbit = habbits.find((habbit) => habbit.id === activeHabbitId)
+	if (!activeHabbit) {
+		return
+	}
 	reRenderMenu(activeHabbit)
-	renderHead(activeHabbit)
+	reRenderHead(activeHabbit)
+	reRenderContent(activeHabbit)
+}
+
+/* work with days */
+
+function addDays(event) {
+	event.preventDefault()
+	const form = event.target
+	const data = new FormData(form)
+	const comment = data.get('comment')
+	form['comment'].classList.remove('error')
+	if (!comment) {
+		form['comment'].classList.add('error')
+	} else {
+		habbits = habbits.map((habbit) => {
+			if (globalActiveHabbitId === habbit.id) {
+				return {
+					...habbit,
+					days: habbit.days.concat([{ comment }]),
+				}
+			}
+			return habbit
+		})
+		form['comment'].value = ''
+		reRender(globalActiveHabbitId)
+		saveData()
+	}
+}
+
+function deleteDay(dayIndex) {
+	habbits = habbits.map((habbit) => {
+		if (habbit.id === globalActiveHabbitId) {
+			return habbit.days.splice(dayIndex, 1)
+		}
+		return habbit
+	})
+	reRender(globalActiveHabbitId)
+	saveData()
 }
 
 /* init */
