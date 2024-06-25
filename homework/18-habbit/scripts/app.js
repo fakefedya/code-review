@@ -22,6 +22,7 @@ const page = {
 	popup: {
 		popupWindow: document.querySelector('.cover'),
 		popupCloseButton: document.querySelector('.popup-close'),
+		iconField: document.querySelector('.popup-form input[name="icon"]'),
 	},
 }
 
@@ -37,6 +38,35 @@ function loadData() {
 
 function saveData() {
 	localStorage.setItem(HABBIT_KEY, JSON.stringify(habbits))
+}
+
+function resetForm(form, fields) {
+	for (const field of fields) {
+		form[field].value = ''
+	}
+}
+
+function validateAndGetFormData(form, fields) {
+	const formData = new FormData(form)
+	const res = {}
+	for (const field of fields) {
+		const fieldValue = formData.get(field)
+		form[field].classList.remove('error')
+		if (!fieldValue) {
+			form[field].classList.add('error')
+		}
+		res[field] = fieldValue
+	}
+	let isValid = true
+	for (const field of fields) {
+		if (!res[field]) {
+			isValid = false
+		}
+	}
+	if (!isValid) {
+		return
+	}
+	return res
 }
 
 /* render */
@@ -100,6 +130,7 @@ function reRender(activeHabbitId) {
 	if (!activeHabbit) {
 		return
 	}
+	document.location.replace(document.location.pathname + '#' + activeHabbitId)
 	reRenderMenu(activeHabbit)
 	reRenderHead(activeHabbit)
 	reRenderContent(activeHabbit)
@@ -109,26 +140,22 @@ function reRender(activeHabbitId) {
 
 function addDays(event) {
 	event.preventDefault()
-	const form = event.target
-	const data = new FormData(form)
-	const comment = data.get('comment')
-	form['comment'].classList.remove('error')
-	if (!comment) {
-		form['comment'].classList.add('error')
-	} else {
-		habbits = habbits.map((habbit) => {
-			if (globalActiveHabbitId === habbit.id) {
-				return {
-					...habbit,
-					days: habbit.days.concat([{ comment }]),
-				}
-			}
-			return habbit
-		})
-		form['comment'].value = ''
-		reRender(globalActiveHabbitId)
-		saveData()
+	const formData = validateAndGetFormData(event.target, ['comment'])
+	if (!formData) {
+		return
 	}
+	habbits = habbits.map((habbit) => {
+		if (globalActiveHabbitId === habbit.id) {
+			return {
+				...habbit,
+				days: habbit.days.concat([{ comment: formData.comment }]),
+			}
+		}
+		return habbit
+	})
+	resetForm(event.target, ['comment'])
+	reRender(globalActiveHabbitId)
+	saveData()
 }
 
 function deleteDay(dayIndex) {
@@ -148,22 +175,56 @@ function togglePopup() {
 	if (!page.menu.addHabbitButton) {
 		return
 	}
-	page.menu.addHabbitButton.addEventListener('click', () => {
-		if (page.popup.popupWindow.classList.contains('cover-hidden')) {
-			page.popup.popupWindow.classList.remove('cover-hidden')
-		}
+	page.popup.popupWindow.classList.contains('cover-hidden')
+		? page.popup.popupWindow.classList.remove('cover-hidden')
+		: page.popup.popupWindow.classList.add('cover-hidden')
+}
+
+/* work with habbits */
+
+function setIcon(context, icon) {
+	page.popup.iconField.value = icon
+	const activeIcon = document.querySelector(
+		'.icon-select .menu-item.menu-item-active'
+	)
+	activeIcon.classList.remove('menu-item-active')
+	context.classList.add('menu-item-active')
+}
+
+function addHabbit(event) {
+	event.preventDefault()
+	const maxId = habbits.reduce(
+		(acc, habbit) => (acc > habbit.id ? acc : habbit.id),
+		0
+	)
+	const formData = validateAndGetFormData(event.target, [
+		'name',
+		'target',
+		'icon',
+	])
+	habbits.push({
+		id: maxId + 1,
+		icon: formData.icon,
+		name: formData.name,
+		target: formData.target,
+		days: [],
 	})
-	page.popup.popupCloseButton.addEventListener('click', () => {
-		if (!page.popup.popupWindow.classList.contains('cover-hidden')) {
-			page.popup.popupWindow.classList.add('cover-hidden')
-		}
-	})
+	resetForm(event.target, ['name', 'target'])
+	togglePopup()
+	saveData()
+	reRender(maxId + 1)
+	// page.popup.popupWindow.classList.add('cover-hidden')
 }
 
 /* init */
 
 ;(() => {
 	loadData()
-	reRender(habbits[0].id)
-	togglePopup()
+	const hashId = Number(document.location.hash.replace('#', ''))
+	const urlHabbit = habbits.find((habbit) => habbit.id === hashId)
+	if (urlHabbit) {
+		reRender(urlHabbit.id)
+	} else {
+		reRender(habbits[0].id)
+	}
 })()

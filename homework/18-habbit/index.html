@@ -19,7 +19,7 @@
 				<img class="logo" src="./images/logo.svg" alt="Логотип Habbit App" />
 				<nav class="menu">
 					<div class="menu-list"></div>
-					<button type="button" class="menu-add">
+					<button type="button" class="menu-add" onclick='togglePopup()'>
 						<img src="./images/icon-add.svg" alt="Добавить привычку	" />
 					</button>
 				</nav>
@@ -62,22 +62,23 @@
 					<h2>Новая привычка</h2>
 					<div class="icon-label">Иконка</div>
 					<div class="icon-select">
-						<button class='menu-item'>
+						<button class='menu-item' onclick="setIcon(this, 'gym')">
 							<img src="./images/icon-gym.svg" alt="Иконка спорта">
 						</button>
-						<button class='menu-item menu-item-active'>
+						<button class='menu-item menu-item-active' onclick="setIcon(this,'bottle')">
 							<img src="./images/icon-bottle.svg" alt="Иконка воды">
 						</button>
-						<button class='menu-item'>
+						<button class='menu-item' onclick="setIcon(this,'meal')">
 							<img src="./images/icon-meal.svg" alt="Иконка питания">
 						</button>
 					</div>
-					<form class="popup-form">
-						<input class='input' type="text" name="name" placeholder='Название'>
-						<input  class='input' type="number" name="name" placeholder='Цель'>
+					<form class="popup-form" onsubmit='addHabbit(event)'>
+						<input class='input' type="text" name="name" autocomplete='off' placeholder='Название'>
+						<input  class='input' type="number" name="target" autocomplete='off'  placeholder='Цель'>
+						<input  type="text" name="icon" value='bottle' hidden>
 						<button class="button" type='submit'>Добавить</button>
 					</form>
-					<button class='popup-close'>
+					<button class='popup-close' onclick='togglePopup()'>
 						<img src="./images/icon-close.svg" alt="Иконка закрытия">
 					</button>
 				</div>
