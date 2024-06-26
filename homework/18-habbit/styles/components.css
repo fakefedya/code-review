@@ -1,0 +1,191 @@
+.menu-item {
+	height: 45px;
+	width: 45px;
+	background-color: var(--color-white);
+	border-radius: 14px;
+	box-shadow: 0px 8px 14px 0px rgba(62, 107, 224, 0.12);
+	cursor: pointer;
+	transition: 0.2s background-color ease;
+}
+
+.menu-item img {
+	transition: 0.2s filter ease;
+}
+
+.menu-item:hover,
+.menu-item-active:hover {
+	background-color: var(--color-purple-hover);
+}
+
+.menu-item:hover img,
+.menu-item-active img {
+	filter: brightness(0) invert(1);
+}
+
+.menu-item-active {
+	background-color: var(--color-purple);
+}
+
+.menu-add {
+	height: 45px;
+	width: 45px;
+	background-color: transparent;
+	border-radius: 14px;
+	border: 1px solid var(--color-purple);
+	cursor: pointer;
+	opacity: 0.5;
+	transition: 0.2s opacity easy;
+}
+
+.menu-add:hover {
+	opacity: 1;
+}
+
+h1 {
+	color: var(--color-black);
+	font-size: 30px;
+}
+
+h2 {
+	color: var(--color-black);
+	font-size: 24px;
+}
+
+.habbit {
+	background-color: var(--color-white);
+	height: 54px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-radius: 10px;
+	gap: 14px;
+	padding-right: 5px;
+}
+
+.habbit-day {
+	height: 100%;
+	max-width: 129px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-bg-panel);
+	border-radius: 10px 0 0 10px;
+	border-right: 1px solid var(--color-gray-border);
+	color: var(--color-black);
+	font-size: 14px;
+	font-weight: 500;
+	text-align: center;
+}
+
+.habbit-comment {
+	height: 100%;
+	width: 100%;
+	padding-left: 14px;
+	display: flex;
+	align-items: center;
+	color: var(--color-comment);
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.habbit-delete {
+	cursor: pointer;
+	margin-right: 9px;
+	transition: 0.2s opacity ease;
+	padding: 6px;
+}
+
+.habbit-delete:hover {
+	opacity: 0.8;
+}
+
+.habbit-form {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	width: 100%;
+}
+
+.habbit-comment-input,
+.input {
+	width: 100%;
+	height: calc(100% - 10px);
+	margin-left: 14px;
+	border-radius: 9px;
+	border: 1px solid var(--color-gray-border);
+	background: #fff;
+	padding: 12px 20px 12px 44px;
+	color: var(--color-comment);
+	font-family: Comfortaa;
+	font-size: 14px;
+}
+
+.habbit-comment-input::placeholder,
+.input::placeholder {
+	color: var(--color-input-placeholder);
+}
+
+.habbit-comment-input.error,
+.input.error {
+	border: 1px solid var(--color-red);
+}
+
+.input-icon {
+	position: absolute;
+	left: 34px;
+}
+
+.habbit-comment-input:focus,
+.input:focus {
+	outline: 1px solid var(--color-purple);
+}
+
+.habbit-add,
+.button {
+	width: 120px;
+	height: 39px;
+	flex-shrink: 0;
+	border-radius: 9px;
+	background-color: var(--color-light-purple);
+	color: var(--color-purple);
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 0.2s background-color, color ease;
+}
+
+.habbit-add:hover,
+.button-hover {
+	background-color: var(--color-purple);
+	color: var(--color-white);
+}
+
+.cover {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-cover);
+}
+
+.cover-hidden {
+	display: none;
+}
+
+.popup {
+	max-width: 500px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 24px;
+	background-color: var(--color-white);
+	border-radius: 10px;
+}

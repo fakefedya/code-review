@@ -1,0 +1,136 @@
+.app {
+	min-height: 100vh;
+	width: 100vw;
+	display: flex;
+	background-color: var(--color-bg-app);
+}
+
+.panel {
+	min-height: 100%;
+	width: var(--panel-min-width);
+	background-color: var(--color-bg-panel);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 48px;
+	padding: 28px 0;
+}
+
+.content {
+	height: 100%;
+	width: 812px;
+	padding: 45px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+}
+
+.logo {
+	height: 66px;
+	width: 71px;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+.menu-list {
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.progress {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: var(--progress-min-width);
+}
+
+.progress-text {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.progress-name {
+	color: var(--color-comment);
+	font-size: 14px;
+}
+
+.progress-percent {
+	color: var(--color-gray-text);
+	font-size: 12px;
+}
+
+.progress-bar {
+	position: relative;
+	width: var(--progress-min-width);
+	height: 5px;
+	flex-shrink: 0;
+	border-radius: 4px;
+	background-color: var(--color-bg-gray);
+}
+
+.progress-current {
+	position: absolute;
+	background-color: var(--color-purple);
+	border-radius: 4px;
+	height: 100%;
+	transition: 0.2s width ease;
+}
+
+#days,
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.popup .menu-item {
+	box-shadow: none;
+	border: 1px solid var(--color-purple);
+}
+
+.icon-label {
+	padding: 20px 0 8px;
+	font-size: 14px;
+	color: var(--color-gray-text);
+}
+
+.icon-select {
+	display: flex;
+	gap: 24px;
+	padding: 0 0 18px;
+}
+
+.popup-form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+.popup-form .input {
+	margin: 0;
+	padding: 11px 20px 12px;
+}
+.popup-form .button {
+	margin: 9px 0 18px;
+}
+
+.popup-close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+}
