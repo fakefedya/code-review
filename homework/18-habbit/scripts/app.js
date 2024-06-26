@@ -3,7 +3,6 @@
 let habbits = []
 const HABBIT_KEY = 'HABBIT_KEY'
 let globalActiveHabbitId
-
 /* page */
 const page = {
 	menu: {
@@ -30,6 +29,18 @@ const page = {
 
 function loadData() {
 	const habbitsString = localStorage.getItem(HABBIT_KEY)
+	if (!habbitsString) {
+		habbits = [
+			{
+				id: 1,
+				icon: 'gym',
+				name: 'Моя первая привычка',
+				target: 1,
+				days: [{ comment: 'Я открыл для себе трекер привычек' }],
+			},
+		]
+		return habbits
+	}
 	const habbitArray = JSON.parse(habbitsString)
 	if (Array.isArray(habbitArray)) {
 		habbits = habbitArray
@@ -202,6 +213,9 @@ function addHabbit(event) {
 		'target',
 		'icon',
 	])
+	if (!formData) {
+		return
+	}
 	habbits.push({
 		id: maxId + 1,
 		icon: formData.icon,
@@ -213,7 +227,6 @@ function addHabbit(event) {
 	togglePopup()
 	saveData()
 	reRender(maxId + 1)
-	// page.popup.popupWindow.classList.add('cover-hidden')
 }
 
 /* init */
