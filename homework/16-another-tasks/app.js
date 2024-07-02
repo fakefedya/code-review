@@ -6,63 +6,50 @@
 
 'use strict'
 
-// const newTask = {
-// 	tasks: [
-// 		{
-// 			id: 1,
-// 			name: 'Тест',
-// 			description: 'Описание',
-// 			order: 0,
-// 		},
-// 	],
-// }
-
-function editTasks() {
-	const ToDoList = {
-		tasks: [],
-		addTask(object) {
-			if (!object) {
-				return this
-			}
-			this.tasks.at(-1)?.id === undefined
-				? (object.id = 1)
-				: (object.id = this.tasks.at(-1)?.id + 1)
-			this.tasks = [...this.tasks, object]
-			return this
-		},
-		getTask(id) {
-			return this.tasks.find(({ id: taskId }) => taskId === id)
-		},
-		removeTask(id) {
-			this.tasks = this.tasks.filter((task) => task.id !== id)
-			return this
-		},
-		updateTask(id, object) {
-			const taskForUpdate = this.getTask(id)
-			if (!taskForUpdate) {
-				return this
-			}
-			Object.assign(taskForUpdate, object)
-			return this
-		},
-		sortTask(sortedBy, method = false) {
-			const ALLOW_SORT_PARAMS = ['id', 'priority']
-			if (!ALLOW_SORT_PARAMS.includes(sortedBy) || !sortedBy) {
-				sortedBy = 'id'
-			}
-			this.tasks.sort(({ [sortedBy]: a }, { [sortedBy]: b }) =>
-				method ? b - a : a - b
-			)
-			return this
-		},
-	}
-	return function () {
-		return ToDoList
-	}
+const newTask = {
+	tasks: [],
 }
 
-const newTask = editTasks()
-const newTask1 = editTasks()
+const ToDoList = {
+	tasks: [],
+	addTask(object) {
+		if (!object) {
+			return this
+		}
+		this.tasks.at(-1)?.id === undefined
+			? (object.id = 1)
+			: (object.id = this.tasks.at(-1)?.id + 1)
+		this.tasks = [...this.tasks, object]
+		return this
+	},
+	removeTask(id) {
+		this.tasks = this.tasks.filter((task) => task.id !== id)
+		return this
+	},
+	updateTask(id, object) {
+		const taskForUpdate = this.tasks.find(({ id: taskId }) => taskId === id)
+		if (!taskForUpdate) {
+			return this
+		}
+		Object.assign(taskForUpdate, object)
+		return this
+	},
+	sortTask(sortedBy, method = false) {
+		const ALLOW_SORT_PARAMS = ['id', 'priority']
+		if (!ALLOW_SORT_PARAMS.includes(sortedBy) || !sortedBy) {
+			sortedBy = 'id'
+		}
+		this.tasks.sort(({ [sortedBy]: a }, { [sortedBy]: b }) =>
+			method ? b - a : a - b
+		)
+		return this
+	},
+}
+
+const newAddTask = ToDoList.addTask.bind(newTask)
+const newRemoveTask = ToDoList.removeTask.bind(newTask)
+const newUpdateTask = ToDoList.updateTask.bind(newTask)
+const newSortTask = ToDoList.sortTask.bind(newTask)
 
 const taskObject1 = {
 	title: 'Данные номер 1',
@@ -85,18 +72,13 @@ const taskObject4 = {
 	priority: 10,
 }
 
-newTask().addTask(taskObject1)
-newTask().addTask(taskObject2)
-newTask().addTask(taskObject3)
-newTask().updateTask(2, {
-	title: 'Данные номер 2 (обновлено)',
-	description: 'Описание 2 (обновлено)',
-	priority: 12,
-})
-newTask().sortTask('priority')
-newTask().removeTask(3)
-console.log(newTask().tasks)
-
-newTask1().addTask(taskObject3)
-newTask1().addTask(taskObject1)
-console.log(newTask1().tasks)
+newAddTask(taskObject1)
+newAddTask(taskObject2)
+newAddTask(taskObject3)
+newAddTask(taskObject4)
+console.log(newTask.tasks)
+newRemoveTask(2)
+console.log(newTask.tasks)
+newUpdateTask(3, { taskObject1 })
+newSortTask('priority')
+console.log(newTask.tasks)
