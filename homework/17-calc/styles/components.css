@@ -39,7 +39,11 @@ h1 {
 
 .operand-input {
 	background-color: var(--input-operand-bg);
-	border: none;
+	border: 1px solid transparent;
+}
+
+.operand-input.error {
+	border: 1px solid #f33;
 }
 
 .result-input {

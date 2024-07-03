@@ -1,52 +1,75 @@
 'use strict'
 
-const calculateStart = (id) => {
-	const operandOne = document.querySelector('.operand-one')
-	const operandTwo = document.querySelector('.operand-two')
-	const inputResult = document.querySelector('.result-input')
-	const alert = document.querySelector('.alert')
-	const buttonOperation = document.querySelectorAll('.button-operation')
-	let operationResult = ''
-	if (!operandOne.value || !operandTwo.value) {
-		alert.innerText = 'Необходимо ввести два числа!'
+const page = {
+	button: document.querySelectorAll('[data-action]'),
+	buttons: document.querySelector('.button-list'),
+	fieldAlert: document.querySelector('.alert'),
+	input: {
+		firstOperand: document.querySelector('.operand-one'),
+		secondOperand: document.querySelector('.operand-two'),
+		result: document.querySelector('.result-input'),
+	},
+}
+
+page.buttons.addEventListener('click', actionOnClick)
+
+function actionOnClick(event) {
+	if (event.target.tagName !== 'BUTTON') {
 		return
 	}
-	buttonOperation.forEach(() => {
-		switch (id) {
-			case 'plus':
-				alert.innerText = 'Произведена операция сложения'
-				operationResult = Number(operandOne.value) + Number(operandTwo.value)
-				break
-			case 'minus':
-				alert.innerText = 'Произведена операция вычитания'
-				operationResult = Number(operandOne.value) - Number(operandTwo.value)
-				break
-			case 'multiply':
-				alert.innerText = 'Произведена операция умножения'
-				operationResult = Number(operandOne.value) * Number(operandTwo.value)
-				break
-			case 'division':
-				if (Number(operandOne.value) !== 0 && Number(operandTwo.value) === 0) {
-					alert.innerText = 'Деление на 0!'
-					operationResult = 'Ошибка'
-					return
-				} else if (
-					Number(operandOne.value) === 0 &&
-					Number(operandTwo.value) === 0
-				) {
-					alert.innerText = 'Деление на 0!'
-					operationResult = 'NaN'
-					return
-				} else {
-					alert.innerText = 'Произведена операция деления'
-					operationResult = Number(operandOne.value) / Number(operandTwo.value)
-				}
-				break
-			default:
-				alert.innerText = ''
+	const action = event.target.dataset.action
+	const operands = [page.input.firstOperand, page.input.secondOperand]
+	const inputData = validateAndGetData(operands)
+	if (!inputData) {
+		return
+	}
+	const actionResult = calculate(inputData, action)
+	page.input.result.value = actionResult
+	resetInputs(operands)
+}
+
+function validateAndGetData(operands) {
+	let isValid = true
+	const result = []
+	for (const operand of operands) {
+		operand.classList.remove('error')
+		page.fieldAlert.innerText = ''
+		if (!operand.value) {
+			operand.classList.add('error')
+			page.fieldAlert.innerText = 'Заполните поля!'
+			isValid = false
 		}
-	})
-	inputResult.value = operationResult
-	operandOne.value = ''
-	operandTwo.value = ''
+		result.push(Number(operand.value))
+	}
+	if (!isValid) {
+		return false
+	}
+	return result
+}
+
+function calculate(inputData, action) {
+	switch (action) {
+		case 'addition': {
+			return inputData[0] + inputData[1]
+		}
+		case 'subtraction': {
+			return inputData[0] - inputData[1]
+		}
+		case 'multiplication': {
+			return (inputData[0] * inputData[1]).toFixed(1)
+		}
+		case 'division': {
+			if (inputData[1] === 0) {
+				page.fieldAlert.innerText = 'Ошибка деления на 0!'
+			}
+			return (inputData[0] / inputData[1]).toFixed(1)
+		}
+		default:
+	}
+}
+
+function resetInputs(operands) {
+	for (const operand of operands) {
+		operand.value = ''
+	}
 }
