@@ -2,6 +2,7 @@
 
 const page = {
 	button: document.querySelectorAll('[data-action]'),
+	buttons: document.querySelector('.button-list'),
 	fieldAlert: document.querySelector('.alert'),
 	input: {
 		firstOperand: document.querySelector('.operand-one'),
@@ -10,20 +11,21 @@ const page = {
 	},
 }
 
-function actionOnClick() {
-	page.button.forEach((el) => {
-		el.addEventListener('click', (e) => {
-			const action = el.dataset.action
-			const operands = [page.input.firstOperand, page.input.secondOperand]
-			const inputData = validateAndGetData(operands)
-			if (!inputData) {
-				return
-			}
-			const actionResult = calculate(inputData, action)
-			page.input.result.value = actionResult
-			resetInputs(operands)
-		})
-	})
+page.buttons.addEventListener('click', actionOnClick)
+
+function actionOnClick(event) {
+	if (event.target.tagName !== 'BUTTON') {
+		return
+	}
+	const action = event.target.dataset.action
+	const operands = [page.input.firstOperand, page.input.secondOperand]
+	const inputData = validateAndGetData(operands)
+	if (!inputData) {
+		return
+	}
+	const actionResult = calculate(inputData, action)
+	page.input.result.value = actionResult
+	resetInputs(operands)
 }
 
 function validateAndGetData(operands) {
@@ -71,6 +73,3 @@ function resetInputs(operands) {
 		operand.value = ''
 	}
 }
-;(() => {
-	actionOnClick()
-})()
