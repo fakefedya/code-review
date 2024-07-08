@@ -11,7 +11,7 @@ for (const [key, value] of weatherMap) {
 	console.log(value)
 }
 
-/* 3.7 */
+/* 3.7 Практика */
 
 console.log([...weatherMap])
 console.log(...weatherMap.keys())
