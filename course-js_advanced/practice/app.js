@@ -38,3 +38,5 @@ const newWeatherMap2 = new Map(Object.entries(weatherObj))
 
 console.log(newWeatherMap)
 console.log(newWeatherMap2)
+
+//
