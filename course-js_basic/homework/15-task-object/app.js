@@ -127,11 +127,11 @@ const ToDoList = {
 	},
 }
 
-const taskObject1 = { title: 'Данные номер 1', priority: 5 }
-const taskObject2 = { title: 'Данные номер 2', priority: 1 }
-const taskObject3 = { title: 'Данные номер 3', priority: 7 }
-const taskObject4 = { title: 'Данные номер 4', priority: 6 }
-const taskObject5 = { title: 'Данные номер 5', priority: 11 }
+// const taskObject1 = { title: 'Данные номер 1', priority: 5 }
+// const taskObject2 = { title: 'Данные номер 2', priority: 1 }
+// const taskObject3 = { title: 'Данные номер 3', priority: 7 }
+// const taskObject4 = { title: 'Данные номер 4', priority: 6 }
+// const taskObject5 = { title: 'Данные номер 5', priority: 11 }
 
 ToDoList.addTask(taskObject3)
 ToDoList.addTask(taskObject1)
@@ -143,7 +143,6 @@ ToDoList.updateTask(4, { title: 'Данные номер 4 (обновлено)'
 ToDoList.sortTask('priority')
 ToDoList.removeTask(1)
 console.log(ToDoList.tasks)
-
 ;('use strict')
 
 /*
@@ -162,7 +161,7 @@ console.log(ToDoList.tasks)
   Реализует порядок сортировки (от меньшего к большему и наоборот).
 */
 
-const toDoList = {
+const toDoList1 = {
 	tasks: [
 		{
 			title: 'Помыть посуду',
@@ -234,7 +233,7 @@ const toDoList = {
 // toDoList.taskSortByParameter('toLow', 'priority')
 // console.log(toDoList.tasks)
 
-const ToDoList = {
+const ToDoList_1 = {
 	tasks: [],
 	addTask(object) {
 		if (!object) {
