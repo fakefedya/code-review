@@ -36,5 +36,5 @@ const weatherObj = {
 
 const newWeatherMap2 = new Map(Object.entries(weatherObj))
 
-console.log(newWeatherMap) // 3.6
+console.log(newWeatherMap)
 console.log(newWeatherMap2)
