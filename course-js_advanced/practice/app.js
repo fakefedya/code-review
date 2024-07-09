@@ -1,48 +1,47 @@
 'use strict'
 
-console.log(Number.MAX_SAFE_INTEGER)
-const max = Number.MAX_SAFE_INTEGER
-const min = Number.MIN_SAFE_INTEGER
-console.log(max, min)
-console.log(max + 1)
-console.log(max + 4)
-console.log(max + 3)
+/*
+	Функция принимает 3 параметра:
+	- Сумма
+	- Исходная валюта
+	- Валюта для конвертации
+	Возвращает строку с конвертированной суммы с постфиксом валюты. Если не смог, то null
+*/
 
-/* BigInt */
+function convert(sum, originalCurrency, targetCurrency) {
+	const allCurrencies = [
+		{
+			style: 'currency',
+			currency: 'USD',
+			multiplier: 1,
+		},
+		{
+			style: 'currency',
+			currency: 'RUB',
+			multiplier: 1 / 60,
+		},
+		{
+			style: 'currency',
+			currency: 'EUR',
+			multiplier: 1.1,
+		},
+	]
 
-console.log(4561437651243567214375124312434n)
-console.log(BigInt(4561437651243567214375124312434))
-console.log(10n * BigInt(10))
-console.log(10n / BigInt(3))
+	if (isNaN(sum)) {
+		console.log(`Введенная сумма "${sum}" не является числом`)
+		return
+	}
 
-/* Интернационализация чисел */
+	const original = allCurrencies.find((c) => c.currency === originalCurrency)
+	if (!original) {
+		return null
+	}
 
-const options1 = {
-	style: 'currency',
-	currency: 'RUB',
-	useGrouping: false,
+	const target = allCurrencies.find((c) => c.currency === targetCurrency)
+	if (!target) {
+		return null
+	}
+	console.log(sum * original.multiplier)
 }
 
-const options2 = {
-	style: 'currency',
-	currency: 'USD',
-}
-
-const options3 = {
-	style: 'decimal',
-}
-
-const options4 = {
-	style: 'percent',
-}
-
-const options5 = {
-	style: 'unit',
-	unit: 'celsius',
-}
-
-console.log(new Intl.NumberFormat('ru-RU', options1).format(23000))
-console.log(new Intl.NumberFormat('en-US', options2).format(23000))
-console.log(new Intl.NumberFormat('ru-RU', options3).format(10000))
-console.log(new Intl.NumberFormat('ru-RU', options4).format(0.1))
-console.log(new Intl.NumberFormat('ru-RU', options5).format(25))
+convert(12, 'USD', 'RUB')
