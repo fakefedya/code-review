@@ -1,49 +1,25 @@
 'use strict'
 
-/*
-	Функция принимает 3 параметра:
-	- Сумма
-	- Исходная валюта
-	- Валюта для конвертации
-	Возвращает строку с конвертированной суммы с постфиксом валюты. Если не смог, то null
-*/
+const now = new Date()
+console.log(now)
 
-function convert(sum, originalCurrency, targetCurrency) {
-	let res = 0
-	const allCurrencies = [
-		{
-			style: 'currency',
-			currency: 'USD',
-			multiplier: 1,
-		},
-		{
-			style: 'currency',
-			currency: 'RUB',
-			multiplier: 0.011,
-		},
-		{
-			style: 'currency',
-			currency: 'EUR',
-			multiplier: 1.08,
-		},
-	]
+console.log(new Date('02-01-2022'))
+console.log(new Date('02/01/2022'))
 
-	if (isNaN(sum)) {
-		console.log(`Введенная сумма "${sum}" не является числом`)
-		return
-	}
+console.log(new Date(2024, 10, 20)) // 10 - ноябрь, потому что в ЖС с 0
+console.log(new Date(2024, 12, 51 + 10))
+console.log(new Date(2024, 12, 51, 10, 5, 10))
+console.log(new Date(1 * 24 * 60 * 60 * 1000))
+console.log(Date.now())
+console.log(new Date(Date.now()))
 
-	const original = allCurrencies.find((c) => c.currency === originalCurrency)
-	if (!original) {
-		return null
-	}
+console.log(now.getFullYear())
+console.log(now.getMonth())
+console.log(now.getDate())
+console.log(now.getDay())
+console.log(now.getHours())
+console.log(now.getMinutes())
+console.log(now.getSeconds())
+console.log(now.getTime())
 
-	const target = allCurrencies.find((c) => c.currency === targetCurrency)
-	if (!target) {
-		return null
-	}
-	res = (original.multiplier * sum) / target.multiplier
-	return new Intl.NumberFormat('ru-RU', target).format(res)
-}
-
-console.log(convert(10000, 'RUB', 'EUR'))
+console.log(new Date(now.setFullYear(2030)))
