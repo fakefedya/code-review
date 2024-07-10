@@ -9,6 +9,7 @@
 */
 
 function convert(sum, originalCurrency, targetCurrency) {
+	let res = 0
 	const allCurrencies = [
 		{
 			style: 'currency',
@@ -18,12 +19,12 @@ function convert(sum, originalCurrency, targetCurrency) {
 		{
 			style: 'currency',
 			currency: 'RUB',
-			multiplier: 1 / 60,
+			multiplier: 0.011,
 		},
 		{
 			style: 'currency',
 			currency: 'EUR',
-			multiplier: 1.1,
+			multiplier: 1.08,
 		},
 	]
 
@@ -41,7 +42,8 @@ function convert(sum, originalCurrency, targetCurrency) {
 	if (!target) {
 		return null
 	}
-	console.log(sum * original.multiplier)
+	res = (original.multiplier * sum) / target.multiplier
+	return new Intl.NumberFormat('ru-RU', target).format(res)
 }
 
-convert(12, 'USD', 'RUB')
+console.log(convert(10000, 'RUB', 'EUR'))
