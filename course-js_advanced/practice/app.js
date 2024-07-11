@@ -1,25 +1,12 @@
 'use strict'
 
-const now = new Date()
-console.log(now)
+const date1 = new Date(2024, 10, 15)
+const date2 = new Date(2024, 11, 15)
+console.log(Number(date1))
+console.log(date2 - date1)
 
-console.log(new Date('02-01-2022'))
-console.log(new Date('02/01/2022'))
+function getDaysBetweenDates(dateFirst, dateSecond) {
+	return (dateSecond - dateFirst) / (1000 * 60 * 60 * 24)
+}
 
-console.log(new Date(2024, 10, 20)) // 10 - ноябрь, потому что в ЖС с 0
-console.log(new Date(2024, 12, 51 + 10))
-console.log(new Date(2024, 12, 51, 10, 5, 10))
-console.log(new Date(1 * 24 * 60 * 60 * 1000))
-console.log(Date.now())
-console.log(new Date(Date.now()))
-
-console.log(now.getFullYear())
-console.log(now.getMonth())
-console.log(now.getDate())
-console.log(now.getDay())
-console.log(now.getHours())
-console.log(now.getMinutes())
-console.log(now.getSeconds())
-console.log(now.getTime())
-
-console.log(new Date(now.setFullYear(2030)))
+console.log(getDaysBetweenDates(date1, date2))
