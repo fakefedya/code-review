@@ -1,10 +1,26 @@
 'use strict'
 
-const first = new Date(2024, 10, 4)
-const second = new Date(2024, 10, 4)
+/*
+Создать функцию, которая принимает пользователя и проверяет, есть ли у него сегодня день рождения или нет
+*/
 
-console.log(first.getTime())
-console.log(second.getTime())
+const user = {
+	name: 'Вася',
+	birthday: '7/11/2024',
+}
 
-console.log(first === second)
-console.log(first.getTime() === second.getTime())
+function isBirthday(user) {
+	const todayDate = new Date()
+	const birthdayDate = new Date(user.birthday)
+	console.log(todayDate.getMonth(), birthdayDate.getMonth())
+	console.log(todayDate.getDate(), birthdayDate.getDate())
+	if (todayDate.getMonth() !== birthdayDate.getMonth()) {
+		return false
+	}
+	if (todayDate.getDate() !== birthdayDate.getDate()) {
+		return false
+	}
+	return true
+}
+
+console.log(isBirthday(user))
