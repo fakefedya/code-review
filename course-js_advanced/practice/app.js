@@ -1,26 +1,30 @@
 'use strict'
 
-/*
-Создать функцию, которая принимает пользователя и проверяет, есть ли у него сегодня день рождения или нет
-*/
+const date = new Date()
 
-const user = {
-	name: 'Вася',
-	birthday: '7/11/2024',
+console.log(date)
+console.log(new Intl.DateTimeFormat('ru-RU').format(date))
+
+const options1 = {
+	hour: 'numeric',
+	minute: 'numeric',
 }
 
-function isBirthday(user) {
-	const todayDate = new Date()
-	const birthdayDate = new Date(user.birthday)
-	console.log(todayDate.getMonth(), birthdayDate.getMonth())
-	console.log(todayDate.getDate(), birthdayDate.getDate())
-	if (todayDate.getMonth() !== birthdayDate.getMonth()) {
-		return false
-	}
-	if (todayDate.getDate() !== birthdayDate.getDate()) {
-		return false
-	}
-	return true
+console.log(new Intl.DateTimeFormat('ru-RU', options1).format(date))
+
+const options2 = {
+	hour: 'numeric',
+	minute: 'numeric',
+	month: 'long',
+	weekday: 'short',
+	year: '2-digit',
 }
 
-console.log(isBirthday(user))
+console.log(new Intl.DateTimeFormat('en-US', options2).format(date))
+console.log(new Intl.DateTimeFormat('ru-RU', options2).format(date))
+
+// console.log(navigator.language)
+// console.log(new Intl.DateTimeFormat(navigator.language, options1).format(date))
+
+const date1 = new Date().setTime(12)
+console.log(date1)
