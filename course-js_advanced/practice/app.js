@@ -1,35 +1,25 @@
 'use strict'
 
-console.log(1)
-const messages = ['Bash!', 'Boom!']
-const boomTimer = setTimeout(
-	(message1, message2) => {
-		// console.log(message1)
-		// console.log(message2)
-	},
-	1000,
-	...messages
-)
-// clearTimeout(boomTimer)
-console.log(3)
+/*
+Таймер пиццы Сделать таймер пиццы (функция, принимающая время), который будет выводить в консоль секунды, оставшиеся до готовности пиццы и сообщение по готовности. 00:04 00:03 00:02 00:01 00:00 🍕!!!
+*/
 
-/* Точность таймеров */
+const readyTimer = '00:05'
 
-const mark1 = performance.now()
+function pizzaTimer(stringWithTime) {
+	const end = new Date().getTime() + stringWithTime
+	const interval = setInterval(() => {
+		console.log(
+			new Intl.DateTimeFormat('ru-RU', {
+				minute: 'numeric',
+				second: 'numeric',
+			}).format(end + 100 - new Date())
+		)
+	}, 1000)
+	setTimeout(() => {
+		clearInterval(interval)
+		console.log(`🍕!!!`)
+	}, stringWithTime)
+}
 
-setTimeout(() => {
-	const mark2 = performance.now()
-	console.log(mark2 - mark1)
-}, 1000)
-
-/* Работа с интервалами */
-
-const interval = setInterval(() => {
-	console.log(new Date())
-}, 1000)
-
-const timer = setTimeout(() => {
-	clearInterval(interval)
-}, 5000)
-
-console.log(interval, timer)
+pizzaTimer(5000)
