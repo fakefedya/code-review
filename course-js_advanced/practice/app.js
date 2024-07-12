@@ -1,30 +1,35 @@
 'use strict'
 
-const date = new Date()
+console.log(1)
+const messages = ['Bash!', 'Boom!']
+const boomTimer = setTimeout(
+	(message1, message2) => {
+		// console.log(message1)
+		// console.log(message2)
+	},
+	1000,
+	...messages
+)
+// clearTimeout(boomTimer)
+console.log(3)
 
-console.log(date)
-console.log(new Intl.DateTimeFormat('ru-RU').format(date))
+/* Точность таймеров */
 
-const options1 = {
-	hour: 'numeric',
-	minute: 'numeric',
-}
+const mark1 = performance.now()
 
-console.log(new Intl.DateTimeFormat('ru-RU', options1).format(date))
+setTimeout(() => {
+	const mark2 = performance.now()
+	console.log(mark2 - mark1)
+}, 1000)
 
-const options2 = {
-	hour: 'numeric',
-	minute: 'numeric',
-	month: 'long',
-	weekday: 'short',
-	year: '2-digit',
-}
+/* Работа с интервалами */
 
-console.log(new Intl.DateTimeFormat('en-US', options2).format(date))
-console.log(new Intl.DateTimeFormat('ru-RU', options2).format(date))
+const interval = setInterval(() => {
+	console.log(new Date())
+}, 1000)
 
-// console.log(navigator.language)
-// console.log(new Intl.DateTimeFormat(navigator.language, options1).format(date))
+const timer = setTimeout(() => {
+	clearInterval(interval)
+}, 5000)
 
-const date1 = new Date().setTime(12)
-console.log(date1)
+console.log(interval, timer)
