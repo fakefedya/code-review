@@ -1,25 +1,59 @@
 'use strict'
 
-const Book = function (title, author) {
-	this.title = title
-	this.author = author
-	this.isRead = false
+/*
+	Реализовать на функциях и прототипах корзину товаров с методами:
+	- Добавить товар
+	- Увеличить число товаров
+	- Уменьшить число товаров (удалить, если их 0)
+*/
+
+const product = {
+	id: 1,
+	name: 'Bread',
+	count: 1,
 }
 
-Book.prototype.read = function () {
-	this.isRead = true
+const Cart = function () {
+	console.log(this)
+	this.products = []
 }
 
-Book.prototype.cover = 'Paper'
+Cart.prototype.addProduct = function (id) {
+	if (this.products.find((product) => product.id) === id.id) {
+		return
+	}
+	this.products.push(product)
+}
 
-const lordOfTheRing = new Book('Lord of the ring', 'Tolkien')
-lordOfTheRing.read()
+Cart.prototype.increaseAmount = function (id) {
+	this.products = this.products.map((product) => {
+		if (product.id === id) {
+			product.count++
+			return product
+		}
+		return product
+	})
+}
 
-console.log(lordOfTheRing)
-console.log(lordOfTheRing.hasOwnProperty('cover'))
-console.log(lordOfTheRing.hasOwnProperty('author'))
+Cart.prototype.decreaseAmount = function (id) {
+	this.products = this.products
+		.map((product) => {
+			if (product.id === id) {
+				product.count--
+				return product
+			}
+			return product
+		})
+		.filter((product) => product.count > 0)
+}
 
-console.log(lordOfTheRing.__proto__)
-console.log(lordOfTheRing.__proto__ === Book.prototype)
-console.log(Book.prototype.isPrototypeOf(lordOfTheRing))
-console.log(Book.prototype.isPrototypeOf(Book))
+const cart = new Cart()
+
+cart.addProduct(product)
+console.log(cart)
+cart.increaseAmount(1)
+console.log(cart)
+cart.decreaseAmount(1)
+console.log(cart)
+cart.decreaseAmount(1)
+console.log(cart)
