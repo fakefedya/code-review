@@ -1,59 +1,12 @@
 'use strict'
 
-/*
-	Реализовать на функциях и прототипах корзину товаров с методами:
-	- Добавить товар
-	- Увеличить число товаров
-	- Уменьшить число товаров (удалить, если их 0)
-*/
-
-const product = {
-	id: 1,
-	name: 'Bread',
-	count: 1,
+const Book = function (title, author) {
+	this.title = title
+	this.author = author
 }
 
-const Cart = function () {
-	console.log(this)
-	this.products = []
-}
+Book.prototype.isRead = false
 
-Cart.prototype.addProduct = function (id) {
-	if (this.products.find((product) => product.id) === id.id) {
-		return
-	}
-	this.products.push(product)
-}
+const lordOfTheRings = new Book('1', '1')
 
-Cart.prototype.increaseAmount = function (id) {
-	this.products = this.products.map((product) => {
-		if (product.id === id) {
-			product.count++
-			return product
-		}
-		return product
-	})
-}
-
-Cart.prototype.decreaseAmount = function (id) {
-	this.products = this.products
-		.map((product) => {
-			if (product.id === id) {
-				product.count--
-				return product
-			}
-			return product
-		})
-		.filter((product) => product.count > 0)
-}
-
-const cart = new Cart()
-
-cart.addProduct(product)
-console.log(cart)
-cart.increaseAmount(1)
-console.log(cart)
-cart.decreaseAmount(1)
-console.log(cart)
-cart.decreaseAmount(1)
-console.log(cart)
+console.log(Book.prototype.__proto__)
