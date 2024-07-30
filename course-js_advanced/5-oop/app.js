@@ -32,15 +32,15 @@ Character.prototype.speak = function () {
 
 const orc = new Character('Орк', 'Гаррош Адский Крик', 'Орочий')
 orc.weapon = 'Кровавый вой'
-orc.__proto__.hit = function () {
+orc.hit = function () {
 	console.log(`${this.name} взял в руки ${this.weapon} и нанес удар!`)
 }
 
 const elf = new Character('Эльф', 'Кельтас Солнечный Скиталец', 'Эльфийский')
-elf.__proto__.spellType = function () {
+elf.spellType = function () {
 	console.log(`${this.name} выбрал тип заклинания.`)
 }
-elf.__proto__.cast = function () {
+elf.cast = function () {
 	console.log(`${this.name} применил заклинание.`)
 }
 
