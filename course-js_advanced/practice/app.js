@@ -3,10 +3,29 @@
 const Book = function (title, author) {
 	this.title = title
 	this.author = author
+	this.isRead = false
 }
 
-Book.prototype.isRead = false
+Book.prototype.read = function () {
+	this.isRead = true
+}
 
-const lordOfTheRings = new Book('1', '1')
+class BookClass {
+	isRead = false
 
-console.log(Book.prototype.__proto__)
+	constructor(title, author) {
+		this.title = title
+		this.author = author
+	}
+
+	read() {
+		this.isRead = true
+	}
+}
+
+const lotr = new BookClass('lotr', 'Tolkien')
+console.log(lotr)
+console.log(lotr instanceof BookClass)
+console.log(lotr.__proto__)
+lotr.read()
+console.log(lotr)
