@@ -1,22 +1,41 @@
 'use strict'
 
-const User = {
-	init(email, password) {
-		this.email = email
-		this.password = password
-	},
-	log() {
-		console.log('Log')
-	},
+/*
+	Фильм
+	- Название
+	- Режиссер
+	- Рейтинг
+	- Длительность
+	- Страна производства
+	- Актеры
+	- Трейлер
+	...
+*/
+
+class Film {
+	#name
+	#author
+	rating
+	#length
+
+	constructor(name, author, length) {
+		this.#name = name
+		this.#author = author
+		this.#length = length
+	}
+
+	get name() {
+		return this.#name
+	}
+
+	get author() {
+		return this.#author
+	}
+
+	get length() {
+		return this.#length
+	}
 }
 
-const user = Object.create(User)
-console.log(user.__proto__ == User)
-user.log()
-// user.email = 'a@a.ru'
-// user.password = '123'
-user.init('a@a.ru', '123')
-console.log(user)
-
-const admin = Object.create(user)
-console.log(admin)
+const film = new Film('Avatar', 'Cameron', 240)
+console.log(film)
