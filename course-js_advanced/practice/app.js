@@ -1,29 +1,67 @@
 'use strict'
 
-class Book {
-	constructor(title, author) {
-		this.title = title
-		this.author = author
+/*
+	- Сделать класс врага с здоровьем и методом получения урона
+	- Сделать класс меча, который имеет силу и метод нанесения урона
+	- Сделать класс орка, который в 50% не получает урон
+*/
+
+class Enemy {
+	health
+
+	constructor(health) {
+		this.health = health
 	}
 
-	info() {
-		console.log(`${this.title} - ${this.author}`)
+	receiveDamage(numberOfDamage) {
+		if (this.health - numberOfDamage < 0) {
+			this.health = 0
+			console.log(this.health)
+			return this.health
+		}
+		this.health = this.health - numberOfDamage
+		console.log(this.health)
+		return this.health
 	}
 }
 
-const book1 = new Book('Lord Of The Rings', 'Tolkien')
-book1.info()
+class Sword {
+	#damage
 
-class EBook extends Book {
-	constructor(title, author, pages) {
-		super(title, author)
-		this.pages = pages
+	constructor(damage) {
+		this.#damage = damage
 	}
 
-	info() {
-		console.log(`${this.title} - ${this.author} - ${this.pages} `)
+	strike(enemy) {
+		enemy.receiveDamage(this.#damage)
 	}
 }
 
-const book2 = new EBook('Lord Of The Rings', 'Tolkien', 220)
-book2.info()
+class Orc extends Enemy {
+	constructor(health) {
+		super(health)
+	}
+
+	receiveDamage(numberOfDamage) {
+		if (Math.random() > 0.5) {
+			if (this.health - numberOfDamage < 0) {
+				this.health = 0
+				console.log(this.health)
+				return this.health
+			}
+			this.health = this.health - numberOfDamage
+			console.log(this.health)
+			return this.health
+		}
+		console.log('Не повезло.. Промах.')
+	}
+}
+
+const enemy = new Orc(10)
+const sword = new Sword(3)
+
+sword.strike(enemy)
+sword.strike(enemy)
+sword.strike(enemy)
+sword.strike(enemy)
+sword.strike(enemy)
