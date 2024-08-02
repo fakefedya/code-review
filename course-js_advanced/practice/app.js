@@ -1,67 +1,46 @@
 'use strict'
 
-/*
-	- Сделать класс врага с здоровьем и методом получения урона
-	- Сделать класс меча, который имеет силу и метод нанесения урона
-	- Сделать класс орка, который в 50% не получает урон
-*/
+// const arr = [1, 2, 3]
+// arr
+// 	.map((a) => a * 2)
+// 	.filter((a) => a > 0)
+// 	.find((a) => a < 100)
 
-class Enemy {
-	health
+class Wallet {
+	balance = 0
 
-	constructor(health) {
-		this.health = health
+	add(sum) {
+		this.balance += sum
+		return this
 	}
 
-	receiveDamage(numberOfDamage) {
-		if (this.health - numberOfDamage < 0) {
-			this.health = 0
-			console.log(this.health)
-			return this.health
-		}
-		this.health = this.health - numberOfDamage
-		console.log(this.health)
-		return this.health
+	remove(sum) {
+		this.balance -= sum
+		return this
 	}
 }
 
-class Sword {
-	#damage
+const wallet = new Wallet()
+const res = wallet.add(100).remove(10)
+console.log(res)
 
-	constructor(damage) {
-		this.#damage = damage
+class Builder {
+	house = {}
+
+	addRoof() {
+		this.house.roof = 'Roof'
+		return this
 	}
 
-	strike(enemy) {
-		enemy.receiveDamage(this.#damage)
-	}
-}
-
-class Orc extends Enemy {
-	constructor(health) {
-		super(health)
+	addFloor() {
+		this.house.floor = 'Floor'
+		return this
 	}
 
-	receiveDamage(numberOfDamage) {
-		if (Math.random() > 0.5) {
-			if (this.health - numberOfDamage < 0) {
-				this.health = 0
-				console.log(this.health)
-				return this.health
-			}
-			this.health = this.health - numberOfDamage
-			console.log(this.health)
-			return this.health
-		}
-		console.log('Не повезло.. Промах.')
+	execute() {
+		return this.house
 	}
 }
 
-const enemy = new Orc(10)
-const sword = new Sword(3)
-
-sword.strike(enemy)
-sword.strike(enemy)
-sword.strike(enemy)
-sword.strike(enemy)
-sword.strike(enemy)
+const res2 = new Builder().addFloor().addRoof().execute()
+console.log(res2)
