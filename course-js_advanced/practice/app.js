@@ -1,27 +1,25 @@
 'use strict'
 
 /*
-	Основная Идея: Принцип Барбары Лисков (LSP - Liskov Substitution Principle) указывает на то, что объекты класса-потомка должны быть способны заменять объекты базового класса без нарушения работоспособности программы.
-*/
+	Цель Лекции: Объяснить важность разделения интерфейса и как это помогает избежать ненужной зависимости классов от интерфейсов, содержащих методы, которые им не требуются.
+ */
 
-class User {
-	#role = 'user'
-	getRole() {
-		return this.#role
+class Weapon {
+	cost
+
+	dealDamage() {}
+}
+
+class Rifle extends Weapon {
+	shoot() {
+		// Огонь
+		this.dealDamage()
 	}
 }
 
-class Admin extends User {
-	#role = ['user', 'admin']
-
-	getRole() {
-		return this.#role.join(', ')
+class Sword extends Weapon {
+	strike() {
+		// Удар
+		this.dealDamage()
 	}
 }
-
-function logRole(user) {
-	console.log('Role: ' + user.getRole().toUpperCase())
-}
-
-logRole(new User())
-logRole(new Admin())
