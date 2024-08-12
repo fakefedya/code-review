@@ -1,25 +1,38 @@
 'use strict'
 
 /*
-	Цель Лекции: Объяснить важность разделения интерфейса и как это помогает избежать ненужной зависимости классов от интерфейсов, содержащих методы, которые им не требуются.
+  Принцип Инверсии Зависимостей утверждает, что высокоуровневые модули не должны зависеть от низкоуровневых модулей, а оба типа модулей должны зависеть от абстракций. Это значит, что зависимости в нашем коде должны основываться на абстракциях, а не на конкретных реализациях.
  */
 
-class Weapon {
-	cost
-
-	dealDamage() {}
-}
-
-class Rifle extends Weapon {
-	shoot() {
-		// Огонь
-		this.dealDamage()
+class DB {
+	save(items) {
+		// Save
+		console.log(`Saved: ${items}`)
 	}
 }
 
-class Sword extends Weapon {
-	strike() {
-		// Удар
-		this.dealDamage()
+class MongoDB extends DB {
+	// ...
+	save(items) {
+		// Save
+		console.log(`Saved to Mongo: ${items}`)
 	}
 }
+
+class ToDoList {
+	items = [1, 2, 3]
+	db
+	constructor(db) {
+		this.db = db
+	}
+
+	saveToDb() {
+		this.db.save(this.items)
+	}
+}
+
+const list1 = new ToDoList(new DB())
+list1.saveToDb()
+
+const list2 = new ToDoList(new MongoDB())
+list2.saveToDb()
