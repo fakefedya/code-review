@@ -1,21 +1,18 @@
 'use strict'
 
-const res = fetch('https://dummyjson.com/products')
-	.then(
-		(response) => response.json(),
-		(error) => console.log(error)
-	)
-	.then(
-		({ products }) => {
-			return fetch('https://dummyjson.com/products/' + products[0].id)
-		},
-		(error) => console.log(error)
-	)
-	.then((response) => response.json())
-	.then((data) => {
-		console.log(data)
-	})
-	.catch((error) => console.log(error))
-	.finally(() => {
-		console.log('Finally')
-	})
+/*
+	Сделать запрос на https://dummyjson.com/products/categories
+	Получит список категорий и отобразить <select> выбора категорий
+*/
+
+const URL = 'https://dummyjson.com/products/category-list'
+
+function createSelect(options) {}
+
+function getCategories() {
+	fetch(URL)
+		.then((response) => response.json())
+		.then((data) => console.log(data))
+}
+
+getCategories()
