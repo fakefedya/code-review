@@ -1,16 +1,21 @@
 'use strict'
 
-function req(id) {
-	const request = new XMLHttpRequest()
-	request.open('GET', 'https://dummyjson.com/products/' + id)
-	request.send()
-
-	request.addEventListener('load', function () {
-		const data = JSON.parse(this.responseText)
+const res = fetch('https://dummyjson.com/products')
+	.then(
+		(response) => response.json(),
+		(error) => console.log(error)
+	)
+	.then(
+		({ products }) => {
+			return fetch('https://dummyjson.com/products/' + products[0].id)
+		},
+		(error) => console.log(error)
+	)
+	.then((response) => response.json())
+	.then((data) => {
 		console.log(data)
 	})
-}
-
-req(1)
-req('')
-req(3)
+	.catch((error) => console.log(error))
+	.finally(() => {
+		console.log('Finally')
+	})
