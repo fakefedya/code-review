@@ -1,26 +1,25 @@
 'use strict'
 
-function getData(url, errorMessage, method = 'GET') {
-	return fetch(url, {
-		method,
-	}).then((response) => {
-		if (!response.ok) {
-			throw new Error(`${errorMessage}: ${response.status}`)
-		}
-		return response.json()
-	})
+const prom = new Promise((resolve, reject) => {
+	if (new Date() < new Date('01/01/2025')) {
+		reject(new Error('Error'))
+	}
+	resolve('Success')
+})
+
+prom.then((data) => console.log(data)).catch((error) => console.log(error))
+
+function timeout(sec) {
+	return new Promise((resolve) => {
+		resolve()
+	}, sec * 1000)
 }
 
-getData('https://dummyjson.com/products', 'Can not get products')
-	.then(({ products }) => {
-		return getData(
-			'https://dummyjson.com/products/' + products[0].id,
-			'Can not get product 1'
-		)
+timeout(1)
+	.then(() => {
+		console.log(1)
+		return timeout(1)
 	})
-	.then((data) => {
-		console.log(data)
-	})
-	.catch((error) => {
-		document.body.innerHTML = error.message
+	.then(() => {
+		console.log(1)
 	})
