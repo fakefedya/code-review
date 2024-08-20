@@ -1,25 +1,41 @@
 'use strict'
 
-const prom = new Promise((resolve, reject) => {
-	if (new Date() < new Date('01/01/2025')) {
-		reject(new Error('Error'))
+class Queue {
+	#message = []
+	#resolve
+	#reject
+	#promise
+
+	constructor() {
+		const { resolve, reject, promise } = Promise.withResolvers()
+		this.#resolve = resolve
+		this.#reject = reject
+		this.#promise = promise
 	}
-	resolve('Success')
-})
 
-prom.then((data) => console.log(data)).catch((error) => console.log(error))
+	add(msg) {
+		this.#message.push(msg)
+		return this
+	}
 
-function timeout(sec) {
-	return new Promise((resolve) => {
-		resolve()
-	}, sec * 1000)
+	close() {
+		this.#resolve(this.#message)
+	}
+
+	error(reason) {
+		this.#reject(reason)
+	}
+
+	subscribe() {
+		return this.#promise
+	}
 }
 
-timeout(1)
-	.then(() => {
-		console.log(1)
-		return timeout(1)
-	})
-	.then(() => {
-		console.log(1)
-	})
+const queue = new Queue()
+const sub1 = queue.subscribe()
+sub1.then((data) => console.log(data)).catch((error) => console.error(error))
+const sub2 = queue.subscribe()
+sub2.then((data) => console.log(data)).catch((error) => console.error(error))
+
+// queue.add('msg1').add('msg2').close()
+queue.add('msg1').add('msg2').error('Не получен последний пакет')
