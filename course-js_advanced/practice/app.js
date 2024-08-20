@@ -1,41 +1,32 @@
 'use strict'
 
-class Queue {
-	#message = []
-	#resolve
-	#reject
-	#promise
+/*
+Создать функцию myFetch для выполнения GET запросов, используя XML request, и возвращение результата через Promise.
+*/
 
-	constructor() {
-		const { resolve, reject, promise } = Promise.withResolvers()
-		this.#resolve = resolve
-		this.#reject = reject
-		this.#promise = promise
-	}
+function myFetch(url) {
+	return new Promise((resolve, reject) => {
+		const request = new XMLHttpRequest()
+		request.open('GET', url)
+		request.send()
 
-	add(msg) {
-		this.#message.push(msg)
-		return this
-	}
+		request.addEventListener('load', function () {
+			if (this.status > 400) {
+				reject(new Error(this.status))
+			}
+			resolve(this.responseText)
+		})
 
-	close() {
-		this.#resolve(this.#message)
-	}
+		request.addEventListener('error', function () {
+			reject(new Error(this.status))
+		})
 
-	error(reason) {
-		this.#reject(reason)
-	}
-
-	subscribe() {
-		return this.#promise
-	}
+		request.addEventListener('timeout', function () {
+			reject(new Error('Timeout'))
+		})
+	})
 }
 
-const queue = new Queue()
-const sub1 = queue.subscribe()
-sub1.then((data) => console.log(data)).catch((error) => console.error(error))
-const sub2 = queue.subscribe()
-sub2.then((data) => console.log(data)).catch((error) => console.error(error))
-
-// queue.add('msg1').add('msg2').close()
-queue.add('msg1').add('msg2').error('Не получен последний пакет')
+myFetch('https://dummyjson.com/productss')
+	.then((data) => console.log(data))
+	.catch((err) => console.error(err))
