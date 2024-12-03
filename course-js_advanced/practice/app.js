@@ -29,4 +29,5 @@ async function getMyCity() {
 		console.error(e)
 	}
 }
+
 getMyCity()
