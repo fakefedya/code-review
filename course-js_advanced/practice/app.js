@@ -1,32 +1,25 @@
 'use strict'
 
-/*
-Создать функцию myFetch для выполнения GET запросов, используя XML request, и возвращение результата через Promise.
-*/
+async function getProducts() {
+	try {
+		const productsResponse = await fetch('https://dummyjson.com/products')
+		if (!productsResponse.ok) {
+			throw new Error(productsResponse.status)
+		}
+		const { products } = await productsResponse.json()
+		console.log(products)
 
-function myFetch(url) {
-	return new Promise((resolve, reject) => {
-		const request = new XMLHttpRequest()
-		request.open('GET', url)
-		request.send()
-
-		request.addEventListener('load', function () {
-			if (this.status > 400) {
-				reject(new Error(this.status))
-			}
-			resolve(this.responseText)
-		})
-
-		request.addEventListener('error', function () {
-			reject(new Error(this.status))
-		})
-
-		request.addEventListener('timeout', function () {
-			reject(new Error('Timeout'))
-		})
-	})
+		const productResponse = await fetch(
+			'https://dummyjson.com/products/' + products[0].id
+		)
+		const product = await productResponse.json()
+		console.log(product)
+	} catch (e) {
+		console.error(e)
+	} finally {
+		console.log('Finally')
+	}
 }
 
-myFetch('https://dummyjson.com/productss')
-	.then((data) => console.log(data))
-	.catch((err) => console.error(err))
+getProducts()
+console.log('End')
