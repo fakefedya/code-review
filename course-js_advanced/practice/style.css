@@ -1,0 +1,23 @@
+.button {
+	color: white;
+	padding: 10px;
+	cursor: pointer;
+	border: none;
+	border: 1px solid #333;
+	background: none;
+}
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+	border: 1px solid #333;
+}
+
+.wrapper > div {
+	padding: 20px;
+	border: 1px solid #333;
+	gap: 20px;
+}
