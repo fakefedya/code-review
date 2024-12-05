@@ -1,29 +1,19 @@
 'use strict'
 
-console.log(document.head)
-console.log(document.body)
+function generate(event) {
+	console.log(event.target.getBoundingClientRect())
 
-const el = document.querySelector('.cards')
-const elAll = document.querySelectorAll('meta')
-console.log(el)
-console.log(elAll)
+	console.log(`X: ${window.pageXOffset}`)
+	console.log(`Y: ${window.pageYOffset}`)
+	console.log(`Client Width: ${document.documentElement.clientWidth}`)
+	console.log(`Client Height: ${document.documentElement.clientHeight}`)
 
-const el1 = document.getElementsByClassName('cards')
-const el2 = document.getElementsByTagName('meta')
-console.log(el1)
-console.log(el2)
+	const el = document.querySelector('.down')
+	const rect = el.getBoundingClientRect()
 
-const button = document.createElement('button')
-button.innerText = 'Тест'
-
-const button2 = document.createElement('button')
-button2.innerText = 'Тест2'
-
-el.append(button)
-el.prepend(button2)
-el.before(button2)
-el.after(button2)
-
-function generate() {
-	el.remove()
+	window.scrollTo({
+		left: window.pageXOffset + rect.left,
+		top: window.pageYOffset + rect.top,
+		behavior: 'smooth',
+	})
 }
