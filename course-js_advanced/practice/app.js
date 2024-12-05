@@ -1,30 +1,29 @@
 'use strict'
 
-async function getRandomFact() {
-	const URL = 'https://uselessfacts.jsph.pl/api/v2/facts/random'
-	const response = await fetch(URL)
-	return response.json()
-}
+console.log(document.head)
+console.log(document.body)
 
-async function main() {
-	try {
-		const cardsWrapper = document.querySelector('.cards')
-		cardsWrapper.style.display = 'flex'
-		cardsWrapper.style.gap = '16px'
-		cardsWrapper.innerHTML = ``
-		const res = await Promise.all([
-			getRandomFact(),
-			getRandomFact(),
-			getRandomFact(),
-		])
-		for (const el of res) {
-			const card = document.createElement('div')
-			card.style.color = '#fff'
-			card.style.border = '1px solid red'
-			card.innerHTML = el.text
-			cardsWrapper.appendChild(card)
-		}
-	} catch (e) {
-		console.error(e)
-	}
+const el = document.querySelector('.cards')
+const elAll = document.querySelectorAll('meta')
+console.log(el)
+console.log(elAll)
+
+const el1 = document.getElementsByClassName('cards')
+const el2 = document.getElementsByTagName('meta')
+console.log(el1)
+console.log(el2)
+
+const button = document.createElement('button')
+button.innerText = 'Тест'
+
+const button2 = document.createElement('button')
+button2.innerText = 'Тест2'
+
+el.append(button)
+el.prepend(button2)
+el.before(button2)
+el.after(button2)
+
+function generate() {
+	el.remove()
 }
