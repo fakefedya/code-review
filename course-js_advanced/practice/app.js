@@ -1,18 +1,20 @@
 'use strict'
 
 const wrapper = document.querySelector('.wrapper')
+console.log(wrapper)
 
-for (let i = 0; i < 100; i++) {
-	const el = document.createElement('div')
-	el.innerHTML = `User ID #${i}`
-	el.setAttribute('data-id', i)
-	// el.addEventListener('click', () => {
-	// 	console.log(`Deleted: User ID #${i}`)
-	// })
-	wrapper.append(el)
-}
+const inner = document.querySelector('.inner')
+const button = document.querySelector('.button')
+console.log(inner)
+console.log(inner.childNodes)
+console.log(inner.children)
 
-wrapper.addEventListener('click', (e) => {
-	const i = e.target.getAttribute('data-id')
-	console.log(`Deleted: User ID #${i}`)
-})
+console.log(inner.parentNode)
+console.log(inner.parentElement)
+
+console.log(button.closest('.wrapper'))
+
+console.log(button.previousElementSibling)
+console.log(button.previousSibling)
+console.log(button.nextElementSibling)
+console.log(button.nextSibling)
