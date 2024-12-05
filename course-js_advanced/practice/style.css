@@ -10,10 +10,12 @@
 .wrapper {
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
 	gap: 20px;
 	margin-bottom: 20px;
 	padding: 20px;
 	border: 1px solid #333;
+	color: white;
 }
 
 .wrapper > div {

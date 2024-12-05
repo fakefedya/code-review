@@ -1,21 +1,18 @@
 'use strict'
 
-const button = document.querySelector('.button')
-const inner = document.querySelector('.inner')
 const wrapper = document.querySelector('.wrapper')
 
-button.addEventListener('click', function (event) {
-	this.style.backgroundColor = 'purple'
-})
+for (let i = 0; i < 100; i++) {
+	const el = document.createElement('div')
+	el.innerHTML = `User ID #${i}`
+	el.setAttribute('data-id', i)
+	// el.addEventListener('click', () => {
+	// 	console.log(`Deleted: User ID #${i}`)
+	// })
+	wrapper.append(el)
+}
 
-inner.addEventListener('click', function (event) {
-	this.style.backgroundColor = 'blue'
-	event.stopPropagation() //Остановить всплытие
+wrapper.addEventListener('click', (e) => {
+	const i = e.target.getAttribute('data-id')
+	console.log(`Deleted: User ID #${i}`)
 })
-wrapper.addEventListener(
-	'click',
-	function (event) {
-		this.style.backgroundColor = 'green'
-	},
-	true
-)
