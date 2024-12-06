@@ -1,0 +1,11 @@
+html {
+	background-color: #16171d;
+}
+.wrapper {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+.count {
+	color: white;
+}
