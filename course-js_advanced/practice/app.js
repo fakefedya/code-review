@@ -1,16 +1,23 @@
-'use strict'
+//Суть задания: создать функцию поиска текста среди элементов на странице.
 
-document.addEventListener('DOMContentLoaded', function (e) {
-	console.log('DOMContentLoaded')
-	console.log(e)
-})
+const wrapper = document.querySelector('.wrapper')
 
-window.addEventListener('load', function (e) {
-	console.log('load')
-	console.log(e)
-})
-
-window.addEventListener('beforeunload', function (e) {
-	e.preventDefault()
-	e.returnValue = ''
-})
+function generateText(countOfSymbols) {
+	for (let i = 0; i < countOfSymbols; i++) {
+		const el = document.createElement('p')
+		el.innerHTML = i
+		wrapper.append(el)
+	}
+}
+generateText(100)
+function search(event) {
+	const inputValue = event.target.value
+	for (const el of [...wrapper.children]) {
+		if (el.innerHTML.includes(inputValue)) {
+			el.style.backgroundColor = 'purple'
+			continue
+		}
+		el.style.backgroundColor = 'transparent'
+	}
+}
+console.log([...wrapper.children])
