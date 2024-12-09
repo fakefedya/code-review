@@ -1,8 +1,7 @@
 //Суть задания: создать функцию поиска текста среди элементов на странице.
 
 'use strict'
-;(function () {
-	const a = 1
-	console.log(APP.calc.add(1, 3))
-	console.log(APP.calc.sub(1, 3))
-})()
+import { add, sub } from './calc.js'
+
+console.log(add(1, 3))
+console.log(sub(1, 3))
