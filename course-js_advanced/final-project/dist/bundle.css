@@ -77,6 +77,72 @@
 	cursor: pointer;
 }
 
+.card {
+	display: flex;
+	flex-direction: column;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.card-image {
+	background: #b8b8b8;
+	display: flex;
+	align-items: start;
+	justify-content: center;
+	padding: 10px 0 0;
+	height: 180px;
+}
+
+.card-info {
+	display: flex;
+	flex-direction: column;
+	background: var(--black);
+	color: var(--white);
+	min-height: 150px;
+	padding: 10px;
+}
+
+.card-tag {
+	font-weight: 300;
+	font-size: 11px;
+	line-height: 15px;
+	margin: 0 0 3px;
+}
+
+.card-name {
+	font-weight: 600;
+	font-size: 15px;
+	line-height: 110%;
+	margin: 0 0 8px;
+}
+
+.card-author {
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 15px;
+}
+
+.card-footer {
+	margin-top: auto;
+	display: flex;
+}
+
+.button-add {
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: none;
+	border: 1px solid var(--white);
+	cursor: pointer;
+}
+
+.button-active {
+	background: var(--white);
+}
+
 .card-list-loader {
 	display: flex;
 	align-items: center;
