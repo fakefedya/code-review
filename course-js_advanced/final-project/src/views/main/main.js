@@ -3,6 +3,7 @@ import onChange from 'on-change'
 import { Header } from '../../components/header/header'
 import { Search } from '../../components/search/search'
 import { CardList } from '../../components/card-list/card-list'
+import { Pagination } from '../../components/pagination/pagination'
 
 export class MainView extends AbstractView {
 	state = {
@@ -43,6 +44,15 @@ export class MainView extends AbstractView {
 			this.state.numFound = data.numFound
 			this.state.list = data.docs
 		}
+		if (path === 'offset') {
+			this.state.loading = true
+			const data = await this.loadList(
+				this.state.searchQuery,
+				this.state.offset
+			)
+			this.state.loading = false
+			this.state.list = data.docs
+		}
 		if (path === 'list' || path === 'loading') {
 			this.render()
 		}
@@ -62,6 +72,7 @@ export class MainView extends AbstractView {
 		`
 		main.append(new Search(this.state).render())
 		main.append(new CardList(this.appState, this.state).render())
+		main.append(new Pagination(this.state).render())
 		this.app.innerHTML = ''
 		this.app.append(main)
 		this.renderHeader()

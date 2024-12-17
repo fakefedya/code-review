@@ -1,0 +1,33 @@
+.pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	& > .button {
+		color: #121212;
+		border: none;
+		background: none;
+		border-radius: 5px;
+		position: relative;
+	}
+}
+.pagination__icon {
+	position: absolute;
+	top: 12px;
+}
+.button.button-prev {
+	padding: 12px 24px 12px 36px;
+	& > .pagination__icon {
+		left: 10px;
+	}
+}
+.button.button-next {
+	padding: 12px 36px 12px 24px;
+	& > .pagination__icon {
+		right: 10px;
+	}
+}
+
+.pagination__icon:nth-last-child {
+	right: 10px;
+}

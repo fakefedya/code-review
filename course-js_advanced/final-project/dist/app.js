@@ -1307,6 +1307,48 @@
 		}
 	}
 
+	class Pagination extends DivComponent {
+		constructor(state) {
+			super();
+			this.state = state;
+		}
+
+		render() {
+			this.el.classList.add('pagination');
+			const nextPage = document.createElement('button');
+			nextPage.setAttribute('data-action', 'next');
+			nextPage.classList.add('button', 'button-next');
+			nextPage.innerHTML = `
+      ${
+				this.state.offset < this.state.numFound
+					? `<span class="pagination__icon">→</span>Следующая страница`
+					: ''
+			}
+    `;
+			const prevPage = document.createElement('button');
+			prevPage.setAttribute('data-action', 'next');
+			prevPage.classList.add('button', 'button-prev');
+			prevPage.innerHTML = `
+      ${
+				this.state.offset > 0
+					? `<span class="pagination__icon">←</span>Предыдущая страница`
+					: ''
+			}
+    `;
+			prevPage.addEventListener('click', () => {
+				this.state.offset = this.state.offset - 9 > 0 ? this.state.offset - 9 : 0;
+			});
+			nextPage.addEventListener('click', () => {
+				this.state.offset =
+					this.state.offset + 9 > this.state.numFound
+						? this.state.numFound
+						: this.state.offset + 9;
+			});
+			this.el.append(prevPage, nextPage);
+			return this.el
+		}
+	}
+
 	class MainView extends AbstractView {
 		state = {
 			list: [],
@@ -1346,6 +1388,15 @@
 				this.state.numFound = data.numFound;
 				this.state.list = data.docs;
 			}
+			if (path === 'offset') {
+				this.state.loading = true;
+				const data = await this.loadList(
+					this.state.searchQuery,
+					this.state.offset
+				);
+				this.state.loading = false;
+				this.state.list = data.docs;
+			}
 			if (path === 'list' || path === 'loading') {
 				this.render();
 			}
@@ -1365,6 +1416,7 @@
 		`;
 			main.append(new Search(this.state).render());
 			main.append(new CardList(this.appState, this.state).render());
+			main.append(new Pagination(this.state).render());
 			this.app.innerHTML = '';
 			this.app.append(main);
 			this.renderHeader();
