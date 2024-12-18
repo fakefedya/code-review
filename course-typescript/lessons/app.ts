@@ -1,20 +1,33 @@
-const skills: string[] = ['dev', 'devops', 'testing']
-
-for (const skill of skills) {
-	console.log(skill.toLocaleUpperCase())
+enum StatusCode {
+	SUCCESS = 200,
+	IN_PROGRESS = 500,
+	FAILED = 400,
 }
 
-const res = skills
-	.filter((s: string) => s !== 'devops')
-	.map((s) => s + '! ')
-	.reduce((a, b) => a + b)
-
-console.log(res)
+const res = {
+	message: 'Платеж успешен',
+	statusCode: StatusCode.SUCCESS,
+}
 
 /*
-	3.8. Tuples
+	200 Успех
+	'p' В процессе
+	400 Отклонен
 */
 
-const skill: [number, string] = [1, 'dev']
-const [id, skillName] = skill
-const arr: [number, string, ...boolean[]] = [1, 'dev', true, false, true]
+if (res.statusCode === StatusCode.SUCCESS) {
+}
+
+function action(status: StatusCode) {}
+action(StatusCode.FAILED)
+
+function compute() {
+	return 200
+}
+
+const enum Roles {
+	ADMIN = 1,
+	USER = 2,
+}
+
+const res2 = Roles.ADMIN

@@ -1,14 +1,24 @@
 "use strict";
-const skills = ['dev', 'devops', 'testing'];
-for (const skill of skills) {
-    console.log(skill.toLocaleUpperCase());
-}
-const res = skills
-    .filter((s) => s !== 'devops')
-    .map((s) => s + '! ')
-    .reduce((a, b) => a + b);
-console.log(res);
+var StatusCode;
+(function (StatusCode) {
+    StatusCode[StatusCode["SUCCESS"] = 200] = "SUCCESS";
+    StatusCode[StatusCode["IN_PROGRESS"] = 500] = "IN_PROGRESS";
+    StatusCode[StatusCode["FAILED"] = 400] = "FAILED";
+})(StatusCode || (StatusCode = {}));
+const res = {
+    message: 'Платеж успешен',
+    statusCode: StatusCode.SUCCESS,
+};
 /*
-    3.8. Tuples
+    200 Успех
+    'p' В процессе
+    400 Отклонен
 */
-const skill = [1, 'dev'];
+if (res.statusCode === StatusCode.SUCCESS) {
+}
+function action(status) { }
+action(StatusCode.FAILED);
+function compute() {
+    return 200;
+}
+const res2 = 1 /* Roles.ADMIN */;
