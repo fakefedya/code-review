@@ -1,35 +1,34 @@
-let input: unknown
-
-input = 3
-input = ['sf', 'sdf']
-
-function run(i: unknown) {
-	if (typeof i == 'number') {
-		i++
+function logId(id: string | number | boolean) {
+	if (typeof id === 'string') {
+		console.log(id)
+	} else if (typeof id === 'number') {
+		console.log(id)
 	} else {
-		i
-	}
-}
-run(input)
-
-async function getData() {
-	try {
-		await fetch('')
-	} catch (error) {
-		if (error instanceof Error) {
-			console.log(error.message)
-		}
+		console.log(id)
 	}
 }
 
-async function getDataForce() {
-	try {
-		await fetch('')
-	} catch (error) {
-		const e = error as Error
+function logError(err: string | string[]) {
+	if (Array.isArray(err)) {
+		console.log(err)
+	} else {
+		console.log(err)
 	}
 }
 
-type U1 = unknown | null
+function logObject(obj: { a: number } | { b: number }) {
+	if ('a' in obj) {
+		console.log(obj.a)
+	} else {
+		console.log(obj.b)
+	}
+}
 
-type I1 = unknown & string
+function logMultipleIds(a: string | number, b: string | boolean) {
+	if (a === b) {
+	} else {
+		console.log(a)
+	}
+}
+
+let a: 1 = 1
