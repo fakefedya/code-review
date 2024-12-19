@@ -1,32 +1,35 @@
-interface User {
-	login: string
-	password?: string
-}
+let input: unknown
 
-const user: User = {
-	login: 'a@a.ru',
-}
+input = 3
+input = ['sf', 'sdf']
 
-function multiply(first: number, second?: number): number {
-	if (!second) {
-		return first * first
-	}
-	return first * second
-}
-
-multiply(5)
-
-interface UserPro {
-	login: string
-	password?: {
-		type: 'primary' | 'secondary'
+function run(i: unknown) {
+	if (typeof i == 'number') {
+		i++
+	} else {
+		i
 	}
 }
+run(input)
 
-function testPass(user: UserPro) {
-	const t = user.password?.type
+async function getData() {
+	try {
+		await fetch('')
+	} catch (error) {
+		if (error instanceof Error) {
+			console.log(error.message)
+		}
+	}
 }
 
-function test(param?: string) {
-	const t = param ?? multiply(5)
+async function getDataForce() {
+	try {
+		await fetch('')
+	} catch (error) {
+		const e = error as Error
+	}
 }
+
+type U1 = unknown | null
+
+type I1 = unknown & string
