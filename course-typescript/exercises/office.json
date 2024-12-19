@@ -1,21 +1,23 @@
-/* Запрос */
-
+// Запрос в виде платежа
 {
-	"topicId": 5,
-	"status": "published" // "draft", "deleted" - optional
+	"sum": 10000,
+	"from": 2,
+	"to": 4
 }
-
-/* Ответ */
-
-[
-	{
-			"question": "Как осуществляется доставка?",
-			"answer": "быстро!",
-			"tags": [
-					"popular",
-					"new"
-			],
-			"likes": 3,
-			"status": "published"
+// Ответ
+{
+	"status": "success",
+	"data": {
+			"databaseId": 567,
+			"sum": 10000,
+			"from": 2,
+			"to": 4
 	}
-]
+},
+{
+	"status": "failed",
+	"data": {
+			"errorMessage": "Недостаточно средств",
+			"errorCode": 4
+	}
+}
