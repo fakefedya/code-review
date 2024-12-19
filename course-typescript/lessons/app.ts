@@ -1,34 +1,18 @@
-function logId(id: string | number | boolean) {
-	if (typeof id === 'string') {
-		console.log(id)
-	} else if (typeof id === 'number') {
-		console.log(id)
-	} else {
-		console.log(id)
-	}
+type User = {
+	name: string
+	age: number
+	skills: string[]
 }
 
-function logError(err: string | string[]) {
-	if (Array.isArray(err)) {
-		console.log(err)
-	} else {
-		console.log(err)
-	}
+type Role = {
+	id: number
 }
 
-function logObject(obj: { a: number } | { b: number }) {
-	if ('a' in obj) {
-		console.log(obj.a)
-	} else {
-		console.log(obj.b)
-	}
-}
+type UserWithRole = User & Role
 
-function logMultipleIds(a: string | number, b: string | boolean) {
-	if (a === b) {
-	} else {
-		console.log(a)
-	}
+let user: UserWithRole = {
+	name: 'Федя',
+	age: 28,
+	skills: ['1', '2'],
+	id: 1,
 }
-
-let a: 1 = 1
