@@ -1,33 +1,32 @@
-enum StatusCode {
-	SUCCESS = 200,
-	IN_PROGRESS = 500,
-	FAILED = 400,
+function logId(id: string | number | boolean) {
+	if (typeof id === 'string') {
+		console.log(id.toLocaleLowerCase())
+	} else if (typeof id === 'number') {
+		console.log(id)
+	} else {
+		console.log(id)
+	}
 }
 
-const res = {
-	message: 'Платеж успешен',
-	statusCode: StatusCode.SUCCESS,
+function logError(err: string | string[]) {
+	if (Array.isArray(err)) {
+		console.log(err)
+	} else {
+		console.log(err)
+	}
 }
 
-/*
-	200 Успех
-	'p' В процессе
-	400 Отклонен
-*/
-
-if (res.statusCode === StatusCode.SUCCESS) {
+function logObject(obj: { a: number } | { b: number }) {
+	if ('a' in obj) {
+		console.log(obj.a)
+	} else {
+		console.log(obj.b)
+	}
 }
 
-function action(status: StatusCode) {}
-action(StatusCode.FAILED)
-
-function compute() {
-	return 200
+function logMultipleIds(a: string | number, b: string | boolean) {
+	if (a === b) {
+	} else {
+		console.log(a)
+	}
 }
-
-const enum Roles {
-	ADMIN = 1,
-	USER = 2,
-}
-
-const res2 = Roles.ADMIN

@@ -1,11 +1,21 @@
+/* Запрос */
+
 {
-	"officeId": 45,
-	"isOpened": false,
-	"contacts": {
-		"phone": "+79100000000",
-		"email": "my@email.ru",
-		"address": {
-			"city": "Москва"
-		}
-	}
+	"topicId": 5,
+	"status": "published" // "draft", "deleted" - optional
 }
+
+/* Ответ */
+
+[
+	{
+			"question": "Как осуществляется доставка?",
+			"answer": "быстро!",
+			"tags": [
+					"popular",
+					"new"
+			],
+			"likes": 3,
+			"status": "published"
+	}
+]
