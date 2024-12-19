@@ -1,42 +1,32 @@
 interface User {
-	name: string
-	age: number
-	skills: string[]
-
-	log: (id: number) => string
+	login: string
+	password?: string
 }
 
-interface Role {
-	roleId: number
-}
-interface UserWithRole extends User, Role {
-	createdAt: Date
+const user: User = {
+	login: 'a@a.ru',
 }
 
-type User2 = {
-	name: string
-	age: number
-	skills: string[]
-
-	log: (id: number) => string
+function multiply(first: number, second?: number): number {
+	if (!second) {
+		return first * first
+	}
+	return first * second
 }
 
-let user: UserWithRole = {
-	name: 'asd',
-	age: 33,
-	skills: ['1', '2'],
-	roleId: 1,
-	createdAt: new Date(),
+multiply(5)
 
-	log(id) {
-		return ''
-	},
+interface UserPro {
+	login: string
+	password?: {
+		type: 'primary' | 'secondary'
+	}
 }
 
-interface UserDictionary {
-	[index: string]: User
+function testPass(user: UserPro) {
+	const t = user.password?.type
 }
 
-type UserDictionary2 = {
-	[index: number]: User
+function test(param?: string) {
+	const t = param ?? multiply(5)
 }
