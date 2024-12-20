@@ -1,11 +1,3 @@
-let a: number = 5
-let b: string = a.toString()
-let e: string = new String(a).valueOf()
-let f: string = new String(a).valueOf()
-
-let c = 'asd'
-let d: number = parseInt(c)
-
 interface User {
 	name: string
 	email: string
@@ -23,16 +15,31 @@ interface Admin {
 	role: number
 }
 
-const admin: Admin = {
-	...user,
-	role: 1,
+function logId(id: string | number) {
+	if (isString(id)) {
+		console.log(id)
+	} else console.log(id)
 }
 
-function userToAdmin(user: User): Admin {
-	return {
-		name: user.name,
-		role: 1,
+// Type Guard
+function isString(x: string | number): x is string {
+	return typeof x === 'string'
+}
+
+// Проверка Type Guard
+function isAdmin(user: User | Admin): user is Admin {
+	return 'role' in user
+}
+
+// Альтернативная проверка Type Guard
+function isAdminAlt(user: User | Admin): user is Admin {
+	return (user as Admin).role !== undefined
+}
+
+function setRole(user: User | Admin) {
+	if (isAdmin(user)) {
+		user.role = 0
+	} else {
+		throw new Error('Пользователь не админ')
 	}
 }
-
-console.log(userToAdmin(user))
