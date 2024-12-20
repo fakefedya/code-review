@@ -1,25 +1,38 @@
-const n0: null = null
-const n1: any = null
-// const n2: number = null
-// const n3: string = null
-// const n4: boolean = null
-// const n5: string[] = null
+let a: number = 5
+let b: string = a.toString()
+let e: string = new String(a).valueOf()
+let f: string = new String(a).valueOf()
+
+let c = 'asd'
+let d: number = parseInt(c)
 
 interface User {
 	name: string
+	email: string
+	login: string
 }
 
-function getUser() {
-	if (Math.random() > 0.5) {
-		return null
-	} else {
-		return {
-			name: 'Вася',
-		} as User
+const user: User = {
+	name: 'Вася',
+	email: 'vasya@vas.tu',
+	login: 'Вася',
+}
+
+interface Admin {
+	name: string
+	role: number
+}
+
+const admin: Admin = {
+	...user,
+	role: 1,
+}
+
+function userToAdmin(user: User): Admin {
+	return {
+		name: user.name,
+		role: 1,
 	}
 }
 
-const user = getUser()
-if (user) {
-	const n55 = user.name
-}
+console.log(userToAdmin(user))
