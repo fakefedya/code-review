@@ -1,24 +1,33 @@
 "use strict";
-var StatusCode;
-(function (StatusCode) {
-    StatusCode[StatusCode["SUCCESS"] = 200] = "SUCCESS";
-    StatusCode[StatusCode["IN_PROGRESS"] = 500] = "IN_PROGRESS";
-    StatusCode[StatusCode["FAILED"] = 400] = "FAILED";
-})(StatusCode || (StatusCode = {}));
-const res = {
-    message: 'Платеж успешен',
-    statusCode: StatusCode.SUCCESS,
+const user = {
+    name: 'Вася',
+    email: 'vasya@vas.tu',
+    login: 'Вася',
 };
-/*
-    200 Успех
-    'p' В процессе
-    400 Отклонен
-*/
-if (res.statusCode === StatusCode.SUCCESS) {
+function logId(id) {
+    if (isString(id)) {
+        console.log(id);
+    }
+    else
+        console.log(id);
 }
-function action(status) { }
-action(StatusCode.FAILED);
-function compute() {
-    return 200;
+// Type Guard
+function isString(x) {
+    return typeof x === 'string';
 }
-const res2 = 1 /* Roles.ADMIN */;
+// Проверка Type Guard
+function isAdmin(user) {
+    return 'role' in user;
+}
+// Альтернативная проверка Type Guard
+function isAdminAlt(user) {
+    return user.role !== undefined;
+}
+function setRole(user) {
+    if (isAdmin(user)) {
+        user.role = 0;
+    }
+    else {
+        throw new Error('Пользователь не админ');
+    }
+}
