@@ -1,42 +1,25 @@
-function generateError(message: string): never {
-	throw new Error(message)
+const n0: null = null
+const n1: any = null
+// const n2: number = null
+// const n3: string = null
+// const n4: boolean = null
+// const n5: string[] = null
+
+interface User {
+	name: string
 }
 
-function dumpError(): never {
-	while (true) {}
-}
-
-function rec(): never {
-	return rec()
-}
-
-type paymentAction = 'refund' | 'checkout' | 'reject'
-
-function processAction(action: paymentAction) {
-	switch (action) {
-		case 'refund':
-			//....
-			break
-		case 'checkout':
-			//....
-			break
-		case 'reject':
-			//....
-			break
-		default:
-			const _: never = action // "_" Чтобы TS не ругался на неиспользованную переменную
-			throw new Error('Нет такого action')
+function getUser() {
+	if (Math.random() > 0.5) {
+		return null
+	} else {
+		return {
+			name: 'Вася',
+		} as User
 	}
 }
 
-function isString(x: string | number): boolean {
-	if (typeof x === 'string') {
-		return true
-	} else if (typeof x === 'number') {
-		return false
-	}
-	generateError('Error message x')
+const user = getUser()
+if (user) {
+	const n55 = user.name
 }
-
-console.log(isString(1))
-console.log(isString('1'))
