@@ -159,7 +159,7 @@ function getUsersFromData(response: Res): IUser[] {
 	}
 }
 
-async function requestToAPI(): Promise<IUser[] | undefined> {
+async function dummyRequest(): Promise<IUser[] | undefined> {
 	try {
 		const response: IResponseSuccess = await axios.get(API_URL)
 		const users = getUsersFromData(response)
@@ -170,4 +170,4 @@ async function requestToAPI(): Promise<IUser[] | undefined> {
 	}
 }
 
-requestToAPI()
+dummyRequest()
