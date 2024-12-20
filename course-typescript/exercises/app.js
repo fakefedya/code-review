@@ -1,12 +1,23 @@
 "use strict";
-let officeInfo = {
-    officeId: 45,
-    isOpened: false,
-    contacts: {
-        phone: '+79100000000',
-        email: 'my@email.ru',
-        address: {
-            city: 'Москва',
-        },
-    },
-};
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus["SUCCESS"] = "success";
+    PaymentStatus["FAILED"] = "failed";
+})(PaymentStatus || (PaymentStatus = {}));
+//Type Guard
+function isSuccess(result) {
+    if (result.status === PaymentStatus.SUCCESS) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function getIdFromData(res) {
+    if (isSuccess(res)) {
+        return res.data.databaseId;
+    }
+    else {
+        throw new Error(res.data.errorMessage);
+    }
+}
