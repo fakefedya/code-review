@@ -1,50 +1,21 @@
-interface IPayment {
-	sum: number
-	from: number
-	to: number
-}
+class User {
+	skills: string[] = []
 
-enum PaymentStatus {
-	SUCCESS = 'success',
-	FAILED = 'failed',
-}
-
-interface IPaymentsRequest extends IPayment {}
-
-interface IDataSuccess extends IPayment {
-	databaseId: number
-}
-
-interface IDataFailed {
-	errorMessage: string
-	errorCode: number
-}
-
-interface IResponseSuccess {
-	status: PaymentStatus.SUCCESS
-	data: IDataSuccess
-}
-
-interface IResponseFailed {
-	status: PaymentStatus.FAILED
-	data: IDataFailed
-}
-
-type Res = IResponseSuccess | IResponseFailed
-
-//Type Guard
-function isSuccess(result: Res): result is IResponseSuccess {
-	if (result.status === PaymentStatus.SUCCESS) {
-		return true
-	} else {
-		return false
+	addSkill(skill: string): void
+	addSkill(skill: string[]): void
+	addSkill(skillOrSkills: string | string[]): void {
+		if (typeof skillOrSkills == 'string') {
+			this.skills.push(skillOrSkills)
+		} else if (Array.isArray(skillOrSkills)) {
+			this.skills = this.skills.concat(skillOrSkills)
+		} else {
+			throw new Error('Передано некорректное умение!')
+		}
 	}
 }
 
-function getIdFromData(res: Res): number {
-	if (isSuccess(res)) {
-		return res.data.databaseId
-	} else {
-		throw new Error(res.data.errorMessage)
-	}
-}
+const user = new User()
+user.addSkill('Плавать')
+user.addSkill('Летать')
+user.addSkill(['Бегать', 'Прыгать'])
+console.log(user.skills)
