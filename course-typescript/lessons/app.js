@@ -1,24 +1,14 @@
 "use strict";
-var StatusCode;
-(function (StatusCode) {
-    StatusCode[StatusCode["SUCCESS"] = 200] = "SUCCESS";
-    StatusCode[StatusCode["IN_PROGRESS"] = 500] = "IN_PROGRESS";
-    StatusCode[StatusCode["FAILED"] = 400] = "FAILED";
-})(StatusCode || (StatusCode = {}));
-const res = {
-    message: 'Платеж успешен',
-    statusCode: StatusCode.SUCCESS,
-};
-/*
-    200 Успех
-    'p' В процессе
-    400 Отклонен
-*/
-if (res.statusCode === StatusCode.SUCCESS) {
+class User {
+    constructor(name) {
+        this.name = name;
+    }
 }
-function action(status) { }
-action(StatusCode.FAILED);
-function compute() {
-    return 200;
+const user = new User('Вася');
+console.log(user);
+user.name = 'Петя';
+console.log(user);
+class Admin {
 }
-const res2 = 1 /* Roles.ADMIN */;
+// const admin = new Admin()
+// console.log((admin.role = 1))
