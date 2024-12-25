@@ -1,33 +1,19 @@
-class Vehicle {
-	make: string //Публичное свойство
-	private damages: string[]
-	private _model: string
-	protected run: number
-	#price: number // Лучше не использовать в TS
+class UserService {
+	private static db: any
 
-	set model(model: string) {
-		this._model = model
+	static getUser(id: number) {
+		return UserService.db.findById(id)
 	}
 
-	get model() {
-		return this._model
+	create() {
+		UserService.db
 	}
 
-	isPriceEqual(v: Vehicle) {
-		return this.#price === v.#price
-	}
-
-	addDamage(damage: string) {
-		this.damages.push(damage)
+	static {
+		UserService.db = 'asd'
 	}
 }
 
-class EuroTrack extends Vehicle {
-	setRun(km: number) {
-		this.run = km / 0.62
-		// this.damage - error
-	}
-}
-
-new Vehicle()
-new EuroTrack()
+UserService.getUser(1)
+const inst = new UserService()
+inst.create()
