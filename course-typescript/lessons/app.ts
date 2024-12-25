@@ -1,45 +1,33 @@
-interface User {
-	name: string
-	email: string
-	login: string
-}
+class Vehicle {
+	make: string //Публичное свойство
+	private damages: string[]
+	private _model: string
+	protected run: number
+	#price: number // Лучше не использовать в TS
 
-const user: User = {
-	name: 'Вася',
-	email: 'vasya@vas.tu',
-	login: 'Вася',
-}
+	set model(model: string) {
+		this._model = model
+	}
 
-interface Admin {
-	name: string
-	role: number
-}
+	get model() {
+		return this._model
+	}
 
-function logId(id: string | number) {
-	if (isString(id)) {
-		console.log(id)
-	} else console.log(id)
-}
+	isPriceEqual(v: Vehicle) {
+		return this.#price === v.#price
+	}
 
-// Type Guard
-function isString(x: string | number): x is string {
-	return typeof x === 'string'
-}
-
-// Проверка Type Guard
-function isAdmin(user: User | Admin): user is Admin {
-	return 'role' in user
-}
-
-// Альтернативная проверка Type Guard
-function isAdminAlt(user: User | Admin): user is Admin {
-	return (user as Admin).role !== undefined
-}
-
-function setRole(user: User | Admin) {
-	if (isAdmin(user)) {
-		user.role = 0
-	} else {
-		throw new Error('Пользователь не админ')
+	addDamage(damage: string) {
+		this.damages.push(damage)
 	}
 }
+
+class EuroTrack extends Vehicle {
+	setRun(km: number) {
+		this.run = km / 0.62
+		// this.damage - error
+	}
+}
+
+new Vehicle()
+new EuroTrack()
