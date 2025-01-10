@@ -1,25 +1,16 @@
-class Resp<D, E> {
-	data?: D
-	error?: E
-
-	constructor(data?: D, error?: E) {
-		if (data) {
-			this.data = data
-		}
-		if (error) {
-			this.error = error
-		}
-	}
+interface IUser {
+	name: string
+	age: number
 }
 
-const res = new Resp<string, number>('data')
-
-class HTTPResp extends Resp<string, number> {
-	code: number
-
-	setCode(code: number) {
-		this.code = code
-	}
+function getValue<T, K extends keyof T>(obj: T, key: K) {
+	console.log(obj[key])
+	return obj[key]
 }
 
-const res2 = new HTTPResp('data')
+const user: IUser = {
+	name: 'Вася',
+	age: 28,
+}
+
+const userName = getValue(user, 'name')
