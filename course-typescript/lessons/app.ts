@@ -6,15 +6,15 @@ interface HTTPResponse<T extends 'success' | 'failed'> {
 	data2: T extends 'success' ? string : Error
 }
 
-const suc: HTTPResponse<'success'> = {
-	code: 200,
-	data: 'done',
-}
+// const suc: HTTPResponse<'success'> = {
+// 	code: 200,
+// 	data: 'done',
+// }
 
-const err: HTTPResponse<'failed'> = {
-	code: 400,
-	data: new Error(),
-}
+// const err: HTTPResponse<'failed'> = {
+// 	code: 400,
+// 	data: new Error(),
+// }
 
 class User {
 	id: number
