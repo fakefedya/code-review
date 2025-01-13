@@ -1,51 +1,47 @@
-const a1: number = Math.random() > 0.5 ? 1 : 0
-
-interface HTTPResponse<T extends 'success' | 'failed'> {
-	code: number
-	data: T extends 'success' ? string : Error
-	data2: T extends 'success' ? string : Error
-}
-
-// const suc: HTTPResponse<'success'> = {
-// 	code: 200,
-// 	data: 'done',
-// }
-
-// const err: HTTPResponse<'failed'> = {
-// 	code: 400,
-// 	data: new Error(),
-// }
-
-class User {
-	id: number
+interface User {
 	name: string
+	age?: number
+	email: string
 }
 
-class UserPersistent extends User {
-	dbId: string
+// Partial делает все поля типа необязательными
+type partial = Partial<User>
+const p: partial = {}
+
+// Required делает все поля типа обязательными
+type required = Required<User>
+
+// Readonly делает поля интерфейса/типа только для чтения
+type readonly = Readonly<User>
+type requiredAndReadonly = Required<Readonly<User>>
+
+interface PaymentPersistent {
+	id: number
+	sum: number
+	from: string
+	to: string
 }
 
-function getUser(id: number): User
-function getUser(dbId: string): UserPersistent
-function getUser(dbIdOdId: string | number): User | UserPersistent {
-	if (typeof dbIdOdId === 'number') {
-		return new User()
-	} else {
-		return new UserPersistent()
-	}
-}
+/*
+	Omit используется для исключения определённых ключей из типа. Например, есть интерфейс Payment, содержащий id, sum, fromString и toString. Используя Omit, можно создать новый тип PaymentWithoutID, исключив из него id.
+*/
 
-type UserOrUserPersistent<T extends string | number> = T extends number
-	? User
-	: UserPersistent
+type Payment = Omit<PaymentPersistent, 'id'>
 
-function getUser2<T extends string | number>(id: T): UserOrUserPersistent<T> {
-	if (typeof id === 'number') {
-		return new User() as UserOrUserPersistent<T>
-	} else {
-		return new UserPersistent() as UserOrUserPersistent<T>
-	}
-}
+/*
+	Pick, напротив, служит для выбора определённых ключей из типа. Например, из того же интерфейса Payment можно выбрать только fromString и toString.
+*/
 
-const res = getUser2(1)
-const res2 = getUser2('asd')
+type PaymentRequisites = Pick<PaymentPersistent, 'from' | 'to'>
+
+/*
+Extract позволяет извлечь из объединения типов (union) только те типы, которые соответствуют определённому критерию.
+*/
+
+type ExtractEx = Extract<'from' | 'to' | Payment, string>
+
+/*
+	Exclude работает наоборот, исключая из объединения типов те, которые соответствуют определённому критерию.
+*/
+
+type ExcludeEx = Exclude<'from' | 'to' | Payment, string>
