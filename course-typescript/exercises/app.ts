@@ -1,38 +1,33 @@
-//8.3. Упражнение - Пишем функцию группировки
+// 8.9. Упражнение - Валидация форм
+/*
+	Необходимо сделать тип для результата валидации формы, основываясь на типе формы
+*/
 
-interface IData {
-	group: number
+interface IForm {
 	name: string
+	password: string
 }
 
-const data: IData[] = [
-	{ group: 1, name: 'Вася' },
-	{ group: 2, name: 'Федя' },
-	{ group: 1, name: 'Паша' },
-]
-
-type key = string | number | symbol
-
-interface IGroup<T> {
-	[key: key]: T[]
+const form: IForm = {
+	name: 'Вася',
+	password: '123',
 }
 
-function group<T extends Record<key, any>>(
-	array: T[],
-	key: keyof T
-): IGroup<T> {
-	return array.reduce<IGroup<T>>((map: IGroup<T>, item) => {
-		const itemKey = item[key]
-		let currentElement = map[itemKey]
-		if (Array.isArray(currentElement)) {
-			currentElement.push(item)
-		} else {
-			currentElement = [item]
-		}
-		map[itemKey] = currentElement
-		console.log(map)
-		return map
-	}, {})
+const formValidation: Validation<IForm> = {
+	name: { isValid: true },
+	password: {
+		isValid: false,
+		errorMessage: 'Длина пароля нге менее 5 символов!',
+	},
 }
 
-group(data, 'group')
+type Validation<T> = {
+	[K in keyof T]:
+		| {
+				isValid: true
+		  }
+		| {
+				isValid: false
+				errorMessage: string
+		  }
+}
