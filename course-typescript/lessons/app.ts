@@ -45,3 +45,37 @@ type ExtractEx = Extract<'from' | 'to' | Payment, string>
 */
 
 type ExcludeEx = Exclude<'from' | 'to' | Payment, string>
+
+class User {
+	constructor(public id: number, public name: string) {}
+}
+
+function getData(id: number): User {
+	return new User(id, 'Вася')
+}
+
+// Для получения типа, который возвращает функция, применяется служебный тип ReturnType
+type RT = ReturnType<typeof getData>
+
+// Через Parameters<typeof GetData> мы получаем типы параметров функции, в данном случае number для идентификатора
+type PT = Parameters<typeof getData>
+type first = PT[0]
+
+/*
+	Awaited - это новый служебный тип в TypeScript 4.5, предназначенный для работы с промисами.
+	Позволяет извлекать тип результата из промиса. Например, из промиса, возвращающего строку, Awaited поможет получить тип string.
+*/
+
+type A = Awaited<Promise<string>>
+type A2 = Awaited<Promise<Promise<string>>>
+
+interface IMenu {
+	name: string
+	url: string
+}
+
+async function getMenu() {
+	return [{ name: 'Аналитика', url: 'Analytics' }]
+}
+
+type R = Awaited<ReturnType<typeof getMenu>>
